@@ -3635,6 +3635,8 @@ MonoBehaviour:
   dirHTwo: 0
   dirV: 0
   dirH: 0
+  playerTrans: {fileID: 4015824875741946}
+  isReplaying: 0
 --- !u!1 &1516806759999594
 GameObject:
   m_ObjectHideFlags: 0
