@@ -5,6 +5,8 @@ using UnityEngine;
 public class AsteroidSpawner : MonoBehaviour
 {
 
+    public static AsteroidSpawner _instance;
+
     public List<Transform> spawnPos = new List<Transform>();
     public Asteroids smallPrefab,mediumPrefab,bigPrefab,extraBigPrefab;
     public ObjectPool<Asteroids> smallPool;
@@ -16,6 +18,21 @@ public class AsteroidSpawner : MonoBehaviour
 
     public float spawnRate;
     float _currentTime;
+
+
+    public static AsteroidSpawner Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     void Start()
     {       
@@ -38,9 +55,10 @@ public class AsteroidSpawner : MonoBehaviour
         _currentTime += Time.deltaTime;
         if(spawnRate - _currentTime <= 0)
         {
-            var randPool = Random.Range(0, poolsList.Count-1);
-            poolsList[randPool].GetObj().SetInitPos(spawnPos[Random.Range(0, spawnPos.Count-1)].position)
+            var randPool = Random.Range(0, poolsList.Count);
+            poolsList[randPool].GetObj().SetInitPos(spawnPos[Random.Range(0, spawnPos.Count - 1)].position)
                                         .SetDir()
+                                        .SetSpawnAsteroid(randPool)
                                         .SetPool(poolsList[randPool]);
              _currentTime = 0;
         }

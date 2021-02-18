@@ -9,7 +9,9 @@ public class Asteroids : MonoBehaviour
     Vector3 _dir;
     public ObjectPool<Asteroids> pool;
     float currentHealth;
-    
+    int spawnType;
+
+
 
     public Asteroids(Vector3 dir, ObjectPool<Asteroids> poolAsteroid)
     {
@@ -37,12 +39,17 @@ public class Asteroids : MonoBehaviour
         return this;
     }
 
+    public Asteroids SetSpawnAsteroid(int n)
+    {    
+        spawnType = n - 1;       
+        return this;
+    }
+
     public Asteroids SetFyweight(Flyweight fw)
     {
         _flyweight = fw;
         return this;
     }
-
 
 
     private void Update()
@@ -54,11 +61,28 @@ public class Asteroids : MonoBehaviour
     public virtual void Alive()
     {
         if (currentHealth <= 0)
-        {
+        {         
+            InstantiateAsteroids(Random.Range(2, 5));
             TurnOff(this);
             pool.Recycle(this);
         }
     }
+
+
+    
+    public virtual void InstantiateAsteroids(int cantAsteroids)
+    {
+        if (spawnType < 0) return;
+        for (int i = 1; i < cantAsteroids; i++)
+        {
+            AsteroidSpawner.Instance.poolsList[spawnType].GetObj()
+                                                         .SetInitPos(transform.position)
+                                                         .SetPool(AsteroidSpawner.Instance.poolsList[spawnType])
+                                                         .SetSpawnAsteroid(spawnType)
+                                                         .SetDir();                                           
+        }
+    }
+
 
     public static void TurnOn(Asteroids asteroids)
     {
@@ -66,7 +90,7 @@ public class Asteroids : MonoBehaviour
     }
 
     public static void TurnOff(Asteroids asteroids)
-    {
+    {             
         asteroids.gameObject.SetActive(false);
     }
 
@@ -77,4 +101,5 @@ public class Asteroids : MonoBehaviour
             currentHealth -= other.GetComponent<Bullet>().TakeDamage;
         }
     }
+
 }

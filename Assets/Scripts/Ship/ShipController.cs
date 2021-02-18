@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Patterns;
 
-public class ShipController : MonoBehaviour
+public class ShipController : MonoBehaviour, IObservable
 {
     ShipModel _model;
 
@@ -28,6 +28,11 @@ public class ShipController : MonoBehaviour
 
     void Update()
     {
+
+        _model.currentTime += Time.deltaTime;
+        LoseLife();
+        if (Time.deltaTime == 0 || _model.death) return;
+
         if (!_model.isReplaying)
             HandleInput();
 
@@ -136,4 +141,69 @@ public class ShipController : MonoBehaviour
     }
 
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Asteroids>())
+        {
+            _model.currentTime = 0f;
+            Notify("LoseLife");
+            _model.death = true;
+        }
+    }
+
+
+    private void LoseLife()
+    {
+        var x = gameObject.GetComponentsInChildren<Renderer>();
+        var collider = gameObject.GetComponent<Collider>();
+        if (_model.death)
+        {
+            /*if (!source.isPlaying || source.clip != allSounds[Sounds.loseLife])
+            {
+                source.clip = allSounds[Sounds.loseLife];
+                source.Play();
+            }*/
+
+            _model.speed = 0;
+            for (int i = 0; i < x.Length; i++)
+            {
+                x[i].enabled = false;
+                collider.enabled = false;
+            }
+
+            if (_model.respawnTime - _model.currentTime < 0)
+            {
+                for (int i = 0; i < x.Length; i++)
+                {
+                    x[i].enabled = true;
+                    collider.enabled = true;
+                }
+                _model.speed = 60;
+                _model.respawnTime = 2;
+                _model.death = false;
+
+            }
+        }
+    }
+
+
+    public void Notify(string eventName)
+    {
+        for (int i = 0; i < _model.allObservers.Count; i++)
+        {
+            _model.allObservers[i].OnNotify(eventName);
+        }
+    }
+
+    public void SubEvent(IObserver obs)
+    {
+        if (!_model.allObservers.Contains(obs)) _model.allObservers.Add(obs);
+    }
+
+    public void UnSubEvent(IObserver obs)
+    {
+        if (_model.allObservers.Contains(obs))
+            _model.allObservers.Remove(obs);
+    }
 }

@@ -6,7 +6,7 @@ public class Flyweight : MonoBehaviour
 {
     public float speed;
     public float damage;
-    public float score;
+    public int score;
     public float lifeTime;
     public float fireRate;
     public float maxHealth;

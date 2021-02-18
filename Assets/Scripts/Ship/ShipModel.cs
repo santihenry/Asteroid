@@ -6,7 +6,6 @@ using Patterns;
 
 public class ShipModel : MonoBehaviour
 {
-
     public float speed = 60;
     public float currentV = 0;
     public float currentH = 0;
@@ -20,12 +19,15 @@ public class ShipModel : MonoBehaviour
     public float dirH;
 
 
+    public bool death = false;
+    public float respawnTime = 2f;
+    public float currentTime;
+
     public Weapons weapon;
     public List<Weapons> weapons = new List<Weapons>();
     public int currentWeapon = 0;
 
-
-
+    public List<IObserver> allObservers = new List<IObserver>();
 
 
     public Transform playerTrans;
