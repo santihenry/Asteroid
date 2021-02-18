@@ -19,6 +19,9 @@ public class ShipController : MonoBehaviour
         _model.buttonD = new MoveRight();
         _model.buttonZ = new UndoCommand();
         _model.buttonR = new ReplayCommand();
+
+        _model.weapon = _model.weapons[0];
+
     }
 
     void Update()
@@ -27,8 +30,34 @@ public class ShipController : MonoBehaviour
             HandleInput();
 
         StartReplay();
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _model.weapon.Shoot();
+        }
+
+        ChangeWeapon();
     }
 
+
+
+    public void ChangeWeapon()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {           
+            _model.currentWeapon--;
+            if (_model.currentWeapon < 0)
+                _model.currentWeapon = _model.weapons.Count-1;           
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {          
+             _model.currentWeapon++;
+            if (_model.currentWeapon > _model.weapons.Count-1)
+                _model.currentWeapon = 0;
+        }
+        _model.weapon = _model.weapons[_model.currentWeapon];
+    }
+    
 
 
     /*

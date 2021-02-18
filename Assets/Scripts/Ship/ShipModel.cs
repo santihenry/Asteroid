@@ -20,6 +20,12 @@ public class ShipModel : MonoBehaviour
     public float dirH;
 
 
+    public Weapons weapon;
+    public List<Weapons> weapons = new List<Weapons>();
+    public int currentWeapon = 0;
+
+
+
 
 
     public Transform playerTrans;
