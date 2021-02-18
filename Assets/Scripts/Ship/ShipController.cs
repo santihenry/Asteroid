@@ -10,6 +10,8 @@ public class ShipController : MonoBehaviour
     private void Awake()
     {      
         _model = GetComponent<ShipModel>();
+        _model.weapons.Add(GetComponentInChildren<MachineGun>());
+        _model.weapons.Add(GetComponentInChildren<RocketGun>());
     }
 
     private void Start()

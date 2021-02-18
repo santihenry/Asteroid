@@ -5,8 +5,8 @@ using UnityEngine;
 public class FlyweightWeapon : MonoBehaviour
 {
     public static Flyweight machineGun = new Flyweight
-    {       
-        fireRate = .16f
+    {
+        fireRate = .18f
     };
 
     public static Flyweight rocket = new Flyweight
