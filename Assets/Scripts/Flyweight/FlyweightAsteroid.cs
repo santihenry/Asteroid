@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class FlyweightAsteroid : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Flyweight asteroidSmall = new Flyweight
     {
-        
-    }
+        maxHealth = 100,
+        speed = Random.Range(16, 20),
+        score = 10,
+    };
 
-    // Update is called once per frame
-    void Update()
+    public static Flyweight asteroidMedium = new Flyweight
     {
-        
-    }
+        maxHealth = 200,
+        speed = Random.Range(16, 20),
+        score = 20,
+    };
+
+    public static Flyweight asteroidBig = new Flyweight
+    {
+        maxHealth = 300,
+        speed = Random.Range(16, 20),
+        score = 25,
+    };
+
+    public static Flyweight asteroidExtraBig = new Flyweight
+    {
+        maxHealth = 500,
+        speed = Random.Range(16, 20),
+        score = 30,
+    };
+
 }

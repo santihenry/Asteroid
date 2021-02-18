@@ -24,8 +24,8 @@ public class RocketGun : Weapons
             for (int i = 0; i < spawnPos.Count; i++)
             {
                 var bullet = bulletPool.GetObj().SetInitPos(spawnPos[i].position)
-                                            .SetDir(transform.parent.forward)
-                                            .SetPool(bulletPool);
+                                                .SetDir(transform.parent.forward)
+                                                .SetPool(bulletPool);
             }
             currentTime = 0;
         }

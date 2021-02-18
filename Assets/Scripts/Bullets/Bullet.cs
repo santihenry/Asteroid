@@ -60,7 +60,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
+    
     public static void TurnOn(Bullet bullet) 
     { 
         bullet.gameObject.SetActive(true);
@@ -71,9 +71,13 @@ public class Bullet : MonoBehaviour
         bullet.gameObject.SetActive(false);
     }
 
-
-
-
+    public float TakeDamage
+    {
+        get
+        {
+            return _flyweight.damage;
+        }
+    }
 
 
 }

@@ -9,4 +9,5 @@ public class Flyweight : MonoBehaviour
     public float score;
     public float lifeTime;
     public float fireRate;
+    public float maxHealth;
 }
