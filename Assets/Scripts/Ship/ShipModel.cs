@@ -18,7 +18,6 @@ public class ShipModel : MonoBehaviour
     public float dirV;
     public float dirH;
 
-
     public bool death = false;
     public float respawnTime = 2f;
     public float currentTime;
@@ -37,6 +36,25 @@ public class ShipModel : MonoBehaviour
     public Coroutine replayCoroutine;
     public static bool shouldStartReplay;
     public bool isReplaying;
+
+
+    public Renderer[] renderer;
+    public Collider col;
+
+    public List<AudioClip> allSounds;
+    private AudioSource source;
+
+    public AudioSource Source
+    {
+        get
+        {
+            return source;
+        }
+        set 
+        {
+            source = value;
+        } 
+    }
 
     public Vector3 StartPos
     {

@@ -9,6 +9,7 @@ public class FlyweightBullet : MonoBehaviour
         speed = 200,
         damage = 20,
         lifeTime = 2,
+        sound = Sounds.shootLazer
     };
 
     public static Flyweight rocket = new Flyweight
@@ -16,5 +17,6 @@ public class FlyweightBullet : MonoBehaviour
         speed = 150,
         damage = 30,
         lifeTime = 5,
+        sound = Sounds.shootRocket
     };
 }

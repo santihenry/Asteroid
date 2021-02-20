@@ -13,6 +13,7 @@ public class Asteroids : MonoBehaviour
 
 
 
+
     public Asteroids(Vector3 dir, ObjectPool<Asteroids> poolAsteroid)
     {
         _dir = dir;
@@ -56,7 +57,15 @@ public class Asteroids : MonoBehaviour
     {
         Alive();
         transform.position += _flyweight.speed * _dir.normalized * Time.deltaTime;
+        Rotarion();
     }
+
+
+    void Rotarion() 
+    {
+        transform.Rotate(new Vector3(Time.deltaTime * _flyweight.rotateSpeed, Time.deltaTime * _flyweight.rotateSpeed, Time.deltaTime * _flyweight.rotateSpeed), Space.Self);
+    }
+
 
     public virtual void Alive()
     {

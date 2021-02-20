@@ -10,4 +10,6 @@ public class Flyweight : MonoBehaviour
     public float lifeTime;
     public float fireRate;
     public float maxHealth;
+    public int sound;
+    public float rotateSpeed;
 }

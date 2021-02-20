@@ -8,7 +8,9 @@ public class Bullet : MonoBehaviour
     Vector3 _dir;
     Flyweight _flyweight;
     float _currentTime;
-
+    public List<AudioClip> allSounds;
+    private AudioSource source;
+    public GameObject hitFx;
 
     public Bullet(Vector3 dir,ObjectPool<Bullet> bulletPool)
     {
@@ -41,6 +43,20 @@ public class Bullet : MonoBehaviour
         return this;
     }
 
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
+
+    private void Start()
+    {
+        if (!source.isPlaying || source.clip != allSounds[Sounds.shootLazer])
+        {
+            source.clip = allSounds[Sounds.shootLazer];
+            source.Play();
+        }
+    }
 
     private void Update()
     {
@@ -49,15 +65,24 @@ public class Bullet : MonoBehaviour
     }
 
 
-    public virtual void Alive()
+    public void Alive()
     {
         _currentTime += Time.deltaTime;
         if (_flyweight.lifeTime < _currentTime)
         {
+            Death();
+        }
+    }
+
+
+
+    public void Death()
+    {
+            var fx = Instantiate(hitFx, transform.position, transform.rotation);
+            Destroy(fx, .5f);
             _currentTime = 0;
             TurnOff(this);
             pool.Recycle(this);
-        }
     }
 
     
@@ -79,5 +104,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Asteroids>())
+        {
+            Death();
+        }
+    }
 
 }

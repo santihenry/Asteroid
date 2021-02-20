@@ -9,6 +9,7 @@ public class FlyweightAsteroid : MonoBehaviour
         maxHealth = 100,
         speed = Random.Range(16, 20),
         score = 10,
+        rotateSpeed = Random.Range(16, 50)
     };
 
     public static Flyweight asteroidMedium = new Flyweight
@@ -16,6 +17,7 @@ public class FlyweightAsteroid : MonoBehaviour
         maxHealth = 200,
         speed = Random.Range(16, 20),
         score = 20,
+        rotateSpeed = Random.Range(16, 50)
     };
 
     public static Flyweight asteroidBig = new Flyweight
@@ -23,6 +25,7 @@ public class FlyweightAsteroid : MonoBehaviour
         maxHealth = 300,
         speed = Random.Range(16, 20),
         score = 25,
+        rotateSpeed = Random.Range(16, 50)
     };
 
     public static Flyweight asteroidExtraBig = new Flyweight
@@ -30,6 +33,7 @@ public class FlyweightAsteroid : MonoBehaviour
         maxHealth = 500,
         speed = Random.Range(16, 20),
         score = 30,
+        rotateSpeed = Random.Range(16, 50)
     };
 
 }

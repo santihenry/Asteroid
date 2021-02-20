@@ -10,6 +10,7 @@ public class ShipController : MonoBehaviour, IObservable
     private void Awake()
     {      
         _model = GetComponent<ShipModel>();
+        _model.Source = GetComponent<AudioSource>();
         _model.weapons.Add(GetComponentInChildren<MachineGun>());
         _model.weapons.Add(GetComponentInChildren<RocketGun>());
     }
@@ -23,6 +24,10 @@ public class ShipController : MonoBehaviour, IObservable
         _model.buttonR = new ReplayCommand();
 
         _model.weapon = _model.weapons[0];
+
+
+        _model.renderer = gameObject.GetComponentsInChildren<Renderer>();
+        _model.col = gameObject.GetComponent<Collider>();
 
     }
 
@@ -110,6 +115,15 @@ public class ShipController : MonoBehaviour, IObservable
         {
             _model.buttonZ.Execute(_model.playerTrans, _model.buttonZ);
         }
+
+        if (Aceleration > 0)
+        {
+            if (!_model.Source.isPlaying || _model.Source.clip != _model.allSounds[Sounds.movementTurbo])
+            {
+                _model.Source.clip = _model.allSounds[Sounds.movementTurbo];
+                _model.Source.Play();
+            }
+        }
     }
 
     private void StartReplay()
@@ -155,38 +169,34 @@ public class ShipController : MonoBehaviour, IObservable
 
     private void LoseLife()
     {
-        var x = gameObject.GetComponentsInChildren<Renderer>();
-        var collider = gameObject.GetComponent<Collider>();
         if (_model.death)
         {
-            /*if (!source.isPlaying || source.clip != allSounds[Sounds.loseLife])
+            if (!_model.Source.isPlaying || _model.Source.clip != _model.allSounds[Sounds.loseLife])
             {
-                source.clip = allSounds[Sounds.loseLife];
-                source.Play();
-            }*/
+                _model.Source.clip = _model.allSounds[Sounds.loseLife];
+                _model.Source.Play();
+            }
 
             _model.speed = 0;
-            for (int i = 0; i < x.Length; i++)
+            for (int i = 0; i < _model.renderer.Length; i++)
             {
-                x[i].enabled = false;
-                collider.enabled = false;
+                _model.renderer[i].enabled = false;
+                _model.col.enabled = false;
             }
 
             if (_model.respawnTime - _model.currentTime < 0)
             {
-                for (int i = 0; i < x.Length; i++)
+                for (int i = 0; i < _model.renderer.Length; i++)
                 {
-                    x[i].enabled = true;
-                    collider.enabled = true;
+                    _model.renderer[i].enabled = true;
+                    _model.col.enabled = true;
                 }
                 _model.speed = 60;
                 _model.respawnTime = 2;
-                _model.death = false;
-
+                _model.death = false;             
             }
         }
     }
-
 
     public void Notify(string eventName)
     {
