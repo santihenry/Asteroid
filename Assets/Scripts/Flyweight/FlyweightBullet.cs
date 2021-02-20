@@ -15,8 +15,17 @@ public class FlyweightBullet : MonoBehaviour
     public static Flyweight rocket = new Flyweight
     {
         speed = 150,
-        damage = 30,
+        damage = 100,
         lifeTime = 5,
         sound = Sounds.shootRocket
     };
+
+    public static Flyweight superRocket = new Flyweight
+    {
+        speed = 160,
+        damage = 300,
+        lifeTime = 5,
+        sound = Sounds.shootRocket
+    };
+
 }
