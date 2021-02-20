@@ -8,7 +8,7 @@ public class LifeSystem : MonoBehaviour, IObserver
 {
     public bool lose = false;
     public TMP_Text lifesTxt;
-    public int lifes = 6;
+    public int lifes = 2;
 
     public static LifeSystem _intance;
 
@@ -35,7 +35,10 @@ public class LifeSystem : MonoBehaviour, IObserver
         if(lifes <= 0)
         {
             lose = true;
+            GameManager.Instance.GameOver();
         }
+
+
     }
 
 

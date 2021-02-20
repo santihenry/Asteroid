@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 39611056}
   - component: {fileID: 39611058}
   - component: {fileID: 39611057}
+  - component: {fileID: 39611059}
   m_Layer: 5
   m_Name: ScoreTxt
   m_TagString: Untagged
@@ -360,7 +361,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Puntos
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -388,14 +389,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -429,13 +430,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 39611057}
-    characterCount: 6
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -460,6 +461,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39611055}
   m_CullTransparentMesh: 0
+--- !u!114 &39611059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39611055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_Score
+  manager: {fileID: 0}
+  myView: {fileID: 39611057}
 --- !u!1 &54779078
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +540,7 @@ MonoBehaviour:
   mediumPrefab: {fileID: 967475605, guid: 9486be6ce24f9d14c90de99152b2a402, type: 3}
   bigPrefab: {fileID: 174678741, guid: 7415de545d80a16449324b476c892fe8, type: 3}
   extraBigPrefab: {fileID: 816046181, guid: f5b647c1fb954b9449fd1983d949b4e6, type: 3}
-  spawnRate: 3
+  spawnRate: 1.5
 --- !u!1 &88712364
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 364185686}
   - component: {fileID: 364185687}
+  - component: {fileID: 364185688}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -991,6 +1008,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0.96813923, b: 0, a: 1}
   size: {x: 220, y: 0, z: 120}
+--- !u!114 &364185688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364185685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b2baaebd01690408380f3b777e6264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &426383289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,6 +2286,7 @@ GameObject:
   - component: {fileID: 1469234978}
   - component: {fileID: 1469234980}
   - component: {fileID: 1469234979}
+  - component: {fileID: 1469234981}
   m_Layer: 5
   m_Name: LifeTxt
   m_TagString: Untagged
@@ -2301,7 +2331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Vida
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2329,14 +2359,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -2370,13 +2400,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1469234979}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -2401,6 +2431,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469234977}
   m_CullTransparentMesh: 0
+--- !u!114 &1469234981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469234977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_Life
+  manager: {fileID: 0}
+  myView: {fileID: 1469234979}
 --- !u!1 &1529095959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,7 +3026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lose: 0
   lifesTxt: {fileID: 1236176443}
-  lifes: 6
+  lifes: 2
 --- !u!1 &1869319088
 GameObject:
   m_ObjectHideFlags: 0

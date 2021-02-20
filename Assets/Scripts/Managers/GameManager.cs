@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager _Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
-        _Instance = this;
+        Instance = this;
     }
 
     public void ExitGame()
@@ -36,6 +36,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Lose");
+    }
+
+    public void Win()
+    {
+        SceneManager.LoadScene("Win");
+    }
 
 
 }

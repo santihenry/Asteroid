@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 152754550}
   - component: {fileID: 152754552}
   - component: {fileID: 152754551}
+  - component: {fileID: 152754553}
   m_Layer: 5
   m_Name: Programers
   m_TagString: Untagged
@@ -275,6 +276,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152754549}
   m_CullTransparentMesh: 0
+--- !u!114 &152754553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152754549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_Prog
+  manager: {fileID: 0}
+  myView: {fileID: 152754551}
 --- !u!1 &173544795
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 173544796}
+  - component: {fileID: 173544797}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -305,6 +322,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173544797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173544795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b2baaebd01690408380f3b777e6264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &717807568
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +346,7 @@ GameObject:
   - component: {fileID: 717807572}
   - component: {fileID: 717807571}
   - component: {fileID: 717807570}
+  - component: {fileID: 717807573}
   m_Layer: 5
   m_Name: BackMenu
   m_TagString: Untagged
@@ -388,7 +418,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 717807571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173544797}
+        m_MethodName: Menu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &717807571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +467,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717807568}
   m_CullTransparentMesh: 0
+--- !u!114 &717807573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717807568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_MainMenu
+  manager: {fileID: 0}
+  myView: {fileID: 1489794601}
 --- !u!1 &748064337
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +632,7 @@ GameObject:
   - component: {fileID: 1160818344}
   - component: {fileID: 1160818346}
   - component: {fileID: 1160818345}
+  - component: {fileID: 1160818347}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -620,7 +677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Controls
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -689,13 +746,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1160818345}
-    characterCount: 8
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -720,6 +777,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160818343}
   m_CullTransparentMesh: 0
+--- !u!114 &1160818347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160818343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_Credits
+  manager: {fileID: 0}
+  myView: {fileID: 1160818345}
 --- !u!1 &1239269895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,8 +1093,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
