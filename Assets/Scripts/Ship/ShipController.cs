@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Patterns;
 
-public class ShipController : MonoBehaviour
+public class ShipController : MonoBehaviour, IObservable
 {
     ShipModel _model;
 
     private void Awake()
     {      
         _model = GetComponent<ShipModel>();
+        _model.Source = GetComponent<AudioSource>();
+        _model.weapons.Add(GetComponentInChildren<MachineGun>());
+        _model.weapons.Add(GetComponentInChildren<RocketGun>());
     }
 
     private void Start()
@@ -22,10 +25,19 @@ public class ShipController : MonoBehaviour
 
         _model.weapon = _model.weapons[0];
 
+
+        _model.renderer = gameObject.GetComponentsInChildren<Renderer>();
+        _model.col = gameObject.GetComponent<Collider>();
+
     }
 
     void Update()
     {
+
+        _model.currentTime += Time.deltaTime;
+        LoseLife();
+        if (Time.deltaTime == 0 || _model.death) return;
+
         if (!_model.isReplaying)
             HandleInput();
 
@@ -103,6 +115,15 @@ public class ShipController : MonoBehaviour
         {
             _model.buttonZ.Execute(_model.playerTrans, _model.buttonZ);
         }
+
+        if (Aceleration > 0)
+        {
+            if (!_model.Source.isPlaying || _model.Source.clip != _model.allSounds[Sounds.movementTurbo])
+            {
+                _model.Source.clip = _model.allSounds[Sounds.movementTurbo];
+                _model.Source.Play();
+            }
+        }
     }
 
     private void StartReplay()
@@ -134,4 +155,65 @@ public class ShipController : MonoBehaviour
     }
 
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Asteroids>())
+        {
+            _model.currentTime = 0f;
+            Notify("LoseLife");
+            _model.death = true;
+        }
+    }
+
+
+    private void LoseLife()
+    {
+        if (_model.death)
+        {
+            if (!_model.Source.isPlaying || _model.Source.clip != _model.allSounds[Sounds.loseLife])
+            {
+                _model.Source.clip = _model.allSounds[Sounds.loseLife];
+                _model.Source.Play();
+            }
+
+            _model.speed = 0;
+            for (int i = 0; i < _model.renderer.Length; i++)
+            {
+                _model.renderer[i].enabled = false;
+                _model.col.enabled = false;
+            }
+
+            if (_model.respawnTime - _model.currentTime < 0)
+            {
+                for (int i = 0; i < _model.renderer.Length; i++)
+                {
+                    _model.renderer[i].enabled = true;
+                    _model.col.enabled = true;
+                }
+                _model.speed = 60;
+                _model.respawnTime = 2;
+                _model.death = false;             
+            }
+        }
+    }
+
+    public void Notify(string eventName)
+    {
+        for (int i = 0; i < _model.allObservers.Count; i++)
+        {
+            _model.allObservers[i].OnNotify(eventName);
+        }
+    }
+
+    public void SubEvent(IObserver obs)
+    {
+        if (!_model.allObservers.Contains(obs)) _model.allObservers.Add(obs);
+    }
+
+    public void UnSubEvent(IObserver obs)
+    {
+        if (_model.allObservers.Contains(obs))
+            _model.allObservers.Remove(obs);
+    }
 }

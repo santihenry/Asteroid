@@ -21,9 +21,12 @@ public class RocketGun : Weapons
     {
         if (_flyweight.fireRate - currentTime <= 0)
         {
-            var bullet = bulletPool.GetObj().SetInitPos(spawnPos.position)
-                                            .SetDir(transform.parent.forward)
-                                            .SetPool(bulletPool);
+            for (int i = 0; i < spawnPos.Count; i++)
+            {
+                var bullet = bulletPool.GetObj().SetInitPos(spawnPos[i].position)
+                                                .SetDir(transform.parent.forward)
+                                                .SetPool(bulletPool);
+            }
             currentTime = 0;
         }
     }

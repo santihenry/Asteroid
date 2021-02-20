@@ -7,12 +7,16 @@ public class FlyweightBullet : MonoBehaviour
     public static Flyweight simpleBullet = new Flyweight
     {
         speed = 200,
+        damage = 20,
         lifeTime = 2,
+        sound = Sounds.shootLazer
     };
 
     public static Flyweight rocket = new Flyweight
     {
         speed = 150,
+        damage = 30,
         lifeTime = 5,
+        sound = Sounds.shootRocket
     };
 }
