@@ -60,12 +60,19 @@ public class ShipController : MonoBehaviour, IObservable
         PowerUpFieldForce();
         PowerUpSpeed();
 
-       /* if (Input.GetKey(KeyCode.Space))
+        /*
+        if (_model.inmune)
         {
-            _model.weapon.Shoot();
-        }*/
+            StartCoroutine(Inmune());
+            if(_model.inmuneDuration - _model.currentTime <= 0)
+            {
+                StopCoroutine(Inmune());
+                _model.inmune = false;
+                _model.fbx.SetActive(true);
+            }
+        }
+        */
 
-        //ChangeWeapon();
     }
 
 
@@ -123,48 +130,6 @@ public class ShipController : MonoBehaviour, IObservable
         _model.weapon.currentLevel = data.weaponLvl;
     }
 
-
-
-    public void ChangeWeapon()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {           
-            _model.currentWeapon--;
-            if (_model.currentWeapon < 0)
-                _model.currentWeapon = _model.weapons.Count-1;           
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {          
-             _model.currentWeapon++;
-            if (_model.currentWeapon > _model.weapons.Count-1)
-                _model.currentWeapon = 0;
-        }
-        _model.weapon = _model.weapons[_model.currentWeapon];
-    }
-    
-
-
-    /*
-    public void Movement()
-    {
-
-        model.aceleration = Input.GetAxisRaw("Vertical");
-        model.dirHTwo = Input.GetAxisRaw("Horizontal");
-        model.dirV = 0;
-        model.dirH = 0;
-
-        model.currentV = Mathf.Lerp(model.currentV, model.dirV, model.interpolation * Time.deltaTime);
-        model.currentH = Mathf.Lerp(model.currentH, model.dirH, model.interpolation * Time.deltaTime);
-        model.turnLeftRigth = Mathf.Lerp(model.turnLeftRigth, model.dirHTwo, model.interpolation * Time.deltaTime);
-
-        transform.Rotate(model.currentV * model.turnSpeed * Time.deltaTime, model.turnLeftRigth * model.turnSpeed * Time.deltaTime, model.currentH * model.turnSpeed * Time.deltaTime);
-
-        if (model.aceleration > 0)
-        {
-            transform.position += transform.forward * model.speed * Time.deltaTime;
-        }
-    }
-    */
 
 
     private void HandleInput()
@@ -261,7 +226,6 @@ public class ShipController : MonoBehaviour, IObservable
     {
         if (_model.death)
         {
-
             _model.weapon.currentLevel = 0;
 
             if (!_model.Source.isPlaying || _model.Source.clip != _model.allSounds[Sounds.loseLife])
@@ -274,23 +238,36 @@ public class ShipController : MonoBehaviour, IObservable
 
             for (int i = 0; i < _model.renderer.Length; i++)
             {
-                _model.renderer[i].enabled = false;
+                _model.fbx.SetActive(false);
                 _model.col.enabled = false;
             }
-
+          
             if (_model.respawnTime - _model.currentTime < 0)
             {
                 for (int i = 0; i < _model.renderer.Length; i++)
                 {
-                    _model.renderer[i].enabled = true;
+                    _model.fbx.SetActive(true);
                     _model.col.enabled = true;
                 }
                 _model.speed = 60;
-                _model.respawnTime = 2;
-                _model.death = false;             
+                _model.currentTime = 0;
+                _model.death = false;
+                //_model.inmune = true;
             }
         }
     }
+
+
+
+
+    IEnumerator Inmune()
+    {
+        yield return new WaitForSeconds(20f);
+        _model.fbx.SetActive(!_model.fbx.activeSelf);
+    }
+
+
+
 
     public void Notify(string eventName)
     {

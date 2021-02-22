@@ -1145,6 +1145,8 @@ MonoBehaviour:
   death: 0
   respawnTime: 2
   currentTime: 0
+  inmune: 0
+  inmuneDuration: 10
   weapon: {fileID: 0}
   weapons: []
   currentWeapon: 0
@@ -1153,6 +1155,7 @@ MonoBehaviour:
   deathFX: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
   turbo: {fileID: 4904690310948010971}
   forceField: {fileID: 4210988294544657771}
+  fbx: {fileID: 5965281066741910643}
   time: 0
   timeSpeed: 0
   playerTrans: {fileID: 5964643706410161832}

@@ -108,14 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWaitTime: 1
   speed: 80
-  randomMoveSpot: {fileID: 2336305207653018615, guid: 027705fd5d6062d4688ceea22542c8ea,
-    type: 3}
-  minX: -80
-  maxX: 80
-  minY: 0
-  maxY: 0
-  minZ: -80
-  maxZ: 80
+  spawnArea: {x: 105, y: 55}
   type: 1
 --- !u!54 &4067767485089503454
 Rigidbody:

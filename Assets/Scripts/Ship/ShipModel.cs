@@ -21,6 +21,9 @@ public class ShipModel : MonoBehaviour
     public bool death = false;
     public float respawnTime = 2f;
     public float currentTime;
+    public bool inmune=false;
+    public float inmuneDuration = 3;
+    public bool test = false;
 
     public Weapons weapon;
     public List<Weapons> weapons = new List<Weapons>();
@@ -32,6 +35,8 @@ public class ShipModel : MonoBehaviour
     public List<IObserver> allObservers = new List<IObserver>();
 
     public GameObject deathFX,turbo,forceField;
+
+    public GameObject fbx;
 
     public float time;
     public float timeSpeed;

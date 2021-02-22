@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnerPowerUp : MonoBehaviour
 {
-    public Transform[] spawnPoints;
+    public Vector2 spawnArea;
     public GameObject[] PowerUP;
     int randomSpawnPoint, randomPoweUp;
 
@@ -30,21 +30,17 @@ public class SpawnerPowerUp : MonoBehaviour
 
     void SpawnPowerUp()
     {
-        randomSpawnPoint = Random.Range(0, spawnPoints.Length);
         randomPoweUp = Random.Range(0, PowerUP.Length);
-        Instantiate(PowerUP[randomPoweUp], spawnPoints[randomSpawnPoint].position, Quaternion.identity);
+        var position = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.y, spawnArea.y));
+        Instantiate(PowerUP[randomPoweUp], position, Quaternion.identity);
 
     }
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.cyan / 3;
+        Gizmos.DrawCube(new Vector3(0, 0, 0), new Vector3(spawnArea.x * 2, 0, spawnArea.y * 2));
 
-        Gizmos.color = Color.green;
-        foreach (var spawn in transform.GetComponentsInChildren<Transform>())
-        {
-            Gizmos.DrawSphere(spawn.position, 2.5f);
-
-        }
     }
 
 }

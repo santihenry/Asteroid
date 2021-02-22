@@ -13,32 +13,29 @@ public enum TypesPoweUp
 
 public class PowerUp : MonoBehaviour
 {
-    protected float waitTime;
+    float waitTime;
     [SerializeField]
-    protected float startWaitTime;
+    float startWaitTime;
     [SerializeField]
-    protected float speed;
-    protected Transform[] moveSpot;
-    protected int randomSpot;
-    protected float _currentTime;
+    float speed;
+    List<Vector3> moveSpot = new List<Vector3>();
+    int randomSpot;
+    float _currentTime;
 
-    #region
-
-    [SerializeField]
-    protected Transform randomMoveSpot;
-    [SerializeField]
-    protected float minX, maxX, minY, maxY, minZ, maxZ;
+    #region    
+    Vector3 randomMoveSpot;
+    public Vector2 spawnArea;
     #endregion
 
     public TypesPoweUp type;
 
+
     private void Start()
     {
-
+        var pos = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.y, spawnArea.y));
+        randomMoveSpot = pos;
+        moveSpot.Add(pos);
     }
-
-
-    
 
     virtual public void Update()
     {
@@ -49,13 +46,15 @@ public class PowerUp : MonoBehaviour
 
     virtual public  void MoveRandom()
     {
-        transform.position = Vector3.MoveTowards(transform.position, randomMoveSpot.position, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, randomMoveSpot.position) < 0.2f)
+        transform.position = Vector3.MoveTowards(transform.position, randomMoveSpot, speed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, randomMoveSpot) < 0.2f)
         {
             if (waitTime - _currentTime <= 0)
             {
-                randomMoveSpot.position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ));
+                var pos2 = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.y, spawnArea.y));
+                randomMoveSpot = pos2;
                 _currentTime = 0;
+                moveSpot.Add(pos2);
             }
         }
     }
@@ -66,18 +65,38 @@ public class PowerUp : MonoBehaviour
         {
             if (other.gameObject.GetComponent<ShipController>())
             {
+                var ship = other.gameObject.GetComponent<ShipController>().GetModel;
                 if (type == TypesPoweUp.turbo)
-                    other.gameObject.GetComponent<ShipController>().GetModel.powerUpSpeed = true;
+                    ship.powerUpSpeed = true;
                 if (type == TypesPoweUp.forceField)
-                    other.gameObject.GetComponent<ShipController>().GetModel.powerUp = true;
+                    ship.powerUp = true;
                 if (type == TypesPoweUp.upgradeWeapon1)
-                    other.gameObject.GetComponent<ShipController>().GetModel.weapon.currentLevel = 1;
+                    ship.weapon.currentLevel = 1;
                 if (type == TypesPoweUp.upgradeWeapon2)
-                    other.gameObject.GetComponent<ShipController>().GetModel.weapon.currentLevel = 2;
+                    ship.weapon.currentLevel = 2;
                 if (type == TypesPoweUp.downgradeWeapon)
-                    other.gameObject.GetComponent<ShipController>().GetModel.weapon.currentLevel = 0;
+                    ship.weapon.currentLevel = 0;
             }
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {    
+        Gizmos.color = Color.green;
+        if(moveSpot.Count > 0)
+            Gizmos.DrawSphere(moveSpot[0], 3f);
+
+        Gizmos.color = Color.red;
+        for (int i = 0; i < moveSpot.Count-1; i++)
+        {
+            if(moveSpot.Count > 1)
+            {
+                Gizmos.DrawLine(moveSpot[i], moveSpot[i + 1]);
+                Gizmos.DrawSphere(moveSpot[i + 1], 2.5f);
+            }
+            
+
         }
     }
 
