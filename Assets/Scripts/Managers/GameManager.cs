@@ -9,10 +9,49 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
+    public GameObject PauseUI;
+    public static bool gamePuse = false;
+
+
+
     private void Awake()
     {
         Instance = this;
     }
+
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gamePuse)
+                Resume();
+            else
+                Pause();
+        }
+
+    }
+
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        gamePuse = false;
+        PauseUI.SetActive(false);
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0;
+        gamePuse = true;
+        if(PauseUI != null)
+        PauseUI.SetActive(true);
+    }
+
+
+
+
 
     public void ExitGame()
     {

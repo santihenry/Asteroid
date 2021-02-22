@@ -16,7 +16,7 @@ public class ScreenWrapper : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject.GetComponent<Asteroids>() != null)
+        if (gameObject.GetComponent<ShipController>() == null)
             WrapperAsteroid();
         else 
             Wrapper();

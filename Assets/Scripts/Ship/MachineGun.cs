@@ -59,17 +59,6 @@ public class MachineGun : Weapons
                                   .SetDir(transform.parent.forward)
                                   .SetPool(bulletPool);
             }
-
-            if (backShot)
-            {
-                for (int i = (currentLevel == 0 ? 0 : (currentLevel == 1 ? 1 : 0)); i < (currentLevel == 0 ? 1 : (currentLevel == 1 ? spawnPos.Count : spawnPos.Count)); i++)
-                {
-                    bulletPool.GetObj().SetInitPos(spawnPos[i].position)
-                                       .SetDir(-transform.parent.forward)
-                                       .SetPool(bulletPool);
-                }
-            }
-
             currentTime = 0;
         } 
     }
