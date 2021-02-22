@@ -129,12 +129,10 @@ namespace Patterns
             weaponsList.Add(player.GetComponentInChildren<MachineGun>());
             weaponsList.Add(player.GetComponentInChildren<RocketGun>());
             weaponsList.Add(player.GetComponentInChildren<Granadas>());
-            Debug.Log($"arma actual : [ {currentWeapon} ]  {weapon}   |   cant armas :  {weaponsList.Count}");
         }
 
         public override void Execute(Command command)
         {
-            Debug.Log($"arma actual : [ {currentWeapon} ] ");
             weapon = weaponsList[currentWeapon];
             Shoot();
         }
@@ -170,9 +168,7 @@ namespace Patterns
                 currentWeapon = 0;
 
             weapon = weaponsList[currentWeapon];
-
-            Debug.Log($"arma actual : [ {currentWeapon} ]  {weapon}   |   cant armas :  {weaponsList.Count}");
-
+       
         }
 
         public override void Execute(Transform playerTrans, Command command)
@@ -199,10 +195,7 @@ namespace Patterns
             if (currentWeapon < 0)
                 currentWeapon = weaponsList.Count-1;
 
-            weapon = weaponsList[currentWeapon];
-
-            Debug.Log($"arma actual : [ {currentWeapon} ]  {weapon}   |   cant armas :  {weaponsList.Count}");
-
+            weapon = weaponsList[currentWeapon];       
         }
 
         public override void Execute(Transform playerTrans, Command command)

@@ -50,11 +50,11 @@ public class Granadas : Weapons
 
     public override void Shoot()
     {
-        if (_flyweight.fireRate - currentTime <= 0 && canDropGranade)
+        if (_flyweight.fireRate - currentTime <= 0 && canDropGranade && bulletSatck.Count < 20)
         {
             var bullet = bulletPool.GetObj().SetInitPos(spawnPos[0].position)
-                                               .SetDir(transform.parent.forward)
-                                               .SetPool(bulletPool);
+                                            .SetDir(transform.parent.forward)
+                                            .SetPool(bulletPool);
 
             listBullets.Add(bullet);
             bulletSatck.Enqueue(bullet);
