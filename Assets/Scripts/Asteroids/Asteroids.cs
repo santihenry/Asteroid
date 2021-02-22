@@ -119,6 +119,14 @@ public class Asteroids : MonoBehaviour
         }
     }
 
+    public float TakeDamage
+    {
+        set
+        {
+            currentHealth -= value;
+        }
+    }
+
 
     public static void TurnOn(Asteroids asteroids)
     {
@@ -139,7 +147,6 @@ public class Asteroids : MonoBehaviour
 
         if(other.gameObject.layer == 9)
         {
-            Debug.Log("MORI");
             TurnOff(this);
             pool.Recycle(this);
         }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 967475606}
   - component: {fileID: 8592388460338095681}
   - component: {fileID: 2324313302772681342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AsteroidMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0698e655dfff92641aa4b189555563bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnType: 0
 --- !u!114 &967475606
 MonoBehaviour:
   m_ObjectHideFlags: 0

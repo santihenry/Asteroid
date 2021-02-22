@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 5965281066695102347}
   - component: {fileID: 1322634073}
   - component: {fileID: 1322634072}
+  - component: {fileID: 5965281066387911765}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -227,6 +228,26 @@ MonoBehaviour:
   spawnPos:
   - {fileID: 5965281066695102347}
   prefab: {fileID: -5777587506694510418, guid: a4c02437cb553714b8b4d2081b032766, type: 3}
+  maxLevel: 2
+  currentLevel: 0
+  prevLevel: 0
+  backShot: 0
+--- !u!114 &5965281066387911765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965281066695102346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd004b9eb492ca4e98b1784a275b3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flyweight: {fileID: 0}
+  spawnPos:
+  - {fileID: 4273014846740416483}
+  prefab: {fileID: 6116064142005535387, guid: c125f700c7135a947aa8f7b9b208a9f5, type: 3}
   maxLevel: 2
   currentLevel: 0
   prevLevel: 0

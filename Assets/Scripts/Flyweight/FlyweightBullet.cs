@@ -9,7 +9,9 @@ public class FlyweightBullet : MonoBehaviour
         speed = 200,
         damage = 20,
         lifeTime = 2,
-        sound = Sounds.shootLazer
+        shotSound = Sounds.shootLazer,
+        hitSound = Sounds.hit,
+        explosiveBullet = false
     };
 
     public static Flyweight rocket = new Flyweight
@@ -17,7 +19,10 @@ public class FlyweightBullet : MonoBehaviour
         speed = 150,
         damage = 100,
         lifeTime = 5,
-        sound = Sounds.shootRocket
+        shotSound = Sounds.shootRocket,
+        hitSound = Sounds.hit,
+        explosiveBullet = false,
+        radius = 0
     };
 
     public static Flyweight superRocket = new Flyweight
@@ -25,7 +30,21 @@ public class FlyweightBullet : MonoBehaviour
         speed = 160,
         damage = 300,
         lifeTime = 5,
-        sound = Sounds.shootRocket
+        shotSound = Sounds.shootRocket,
+        hitSound = Sounds.hit,
+        explosiveBullet = false,
+        radius = 0
+    };
+
+    public static Flyweight Granadas = new Flyweight
+    {
+        speed = 0,
+        damage = 200,
+        lifeTime = 100,
+        shotSound = Sounds.shootRocket,
+        hitSound = Sounds.hit,
+        explosiveBullet = true,
+        radius = 12
     };
 
 }

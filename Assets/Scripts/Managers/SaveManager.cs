@@ -5,8 +5,40 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
 
-    /// ASTEROID
-  
+    /// LIFES
+
+    public static void SaveLifeStats(LifeSystem lifeStats)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+
+
+        string filePath = Application.persistentDataPath + "/Life_stats.dll";
+        FileStream fs = new FileStream(filePath, FileMode.Create);
+
+        LifeData lifeData = new LifeData(lifeStats);
+
+        bf.Serialize(fs, lifeData);
+        fs.Close();
+
+
+    }
+
+    public static LifeData LoadLifeStats()
+    {
+        string filePath = Application.persistentDataPath + "/Life_stats.dll";
+        if (File.Exists(filePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream(filePath, FileMode.Open);
+            LifeData lifeData = bf.Deserialize(fs) as LifeData;
+            fs.Close();
+            return lifeData;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
 
 

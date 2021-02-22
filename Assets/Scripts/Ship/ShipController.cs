@@ -11,17 +11,31 @@ public class ShipController : MonoBehaviour, IObservable
     {      
         _model = GetComponent<ShipModel>();
         _model.Source = GetComponent<AudioSource>();
+        
         _model.weapons.Add(GetComponentInChildren<MachineGun>());
         _model.weapons.Add(GetComponentInChildren<RocketGun>());
+        _model.weapons.Add(GetComponentInChildren<Granadas>());
     }
 
     private void Start()
     {
+        
         _model.buttonW = new MoveFoward();
         _model.buttonA = new MoveLeft();
         _model.buttonD = new MoveRight();
         _model.buttonZ = new UndoCommand();
         _model.buttonR = new ReplayCommand();
+
+        _model.shootButton = new ShotCommand();
+        _model.prevtWeaponButton = new PrevWeaponCommand();
+        _model.nextWeaponButton = new NextWeaponCommand();
+
+        _model.shootButton.Init(_model);
+        _model.prevtWeaponButton.Init(_model);
+        _model.nextWeaponButton.Init(_model);
+
+
+
 
         _model.weapon = _model.weapons[0];
 
@@ -46,12 +60,12 @@ public class ShipController : MonoBehaviour, IObservable
         PowerUpFieldForce();
         PowerUpSpeed();
 
-        if (Input.GetKey(KeyCode.Space))
+       /* if (Input.GetKey(KeyCode.Space))
         {
             _model.weapon.Shoot();
-        }
+        }*/
 
-        ChangeWeapon();
+        //ChangeWeapon();
     }
 
 
@@ -106,6 +120,7 @@ public class ShipController : MonoBehaviour, IObservable
         transform.rotation = data.rotation.ToQuaternion();
         _model.powerUp = data.poewerUpField;
         _model.powerUpSpeed = data.powerUpSeed;
+        _model.weapon.currentLevel = data.weaponLvl;
     }
 
 
@@ -173,6 +188,25 @@ public class ShipController : MonoBehaviour, IObservable
             _model.buttonZ.Execute(_model.playerTrans, _model.buttonZ);
         }
 
+
+
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _model.shootButton.Execute(_model.shootButton);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _model.prevtWeaponButton.Execute(_model.prevtWeaponButton);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _model.nextWeaponButton.Execute( _model.nextWeaponButton);
+        }
+
+
         if (Aceleration > 0)
         {
             if (!_model.Source.isPlaying || _model.Source.clip != _model.allSounds[Sounds.movementTurbo])
@@ -223,27 +257,13 @@ public class ShipController : MonoBehaviour, IObservable
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
-    {/*
-        if (other.gameObject.GetComponent<PowerUp>().type == TypesPoweUp.forceField/)
-        {
-            _model.powerUp = true;
-            _model.time += Time.deltaTime;
-        }
-
-        if (other.gameObject.GetComponent<PowerUp>().type == TypesPoweUp.forceField)
-        {
-            _model.powerUpSpeed = true;
-            _model.timeSpeed += Time.deltaTime;
-        }*/
-    }
-
-
     private void LoseLife()
     {
         if (_model.death)
         {
+
+            _model.weapon.currentLevel = 0;
+
             if (!_model.Source.isPlaying || _model.Source.clip != _model.allSounds[Sounds.loseLife])
             {
                 _model.Source.clip = _model.allSounds[Sounds.loseLife];
@@ -251,6 +271,7 @@ public class ShipController : MonoBehaviour, IObservable
             }
 
             _model.speed = 0;
+
             for (int i = 0; i < _model.renderer.Length; i++)
             {
                 _model.renderer[i].enabled = false;

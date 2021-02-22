@@ -20,7 +20,6 @@ public class SpawnerPowerUp : MonoBehaviour
     {
         if(_currentTime >= 3)
         {
-            Debug.Log("asdasdasddsa");
             if(FindObjectOfType<PowerUp>() == null)
                 SpawnPowerUp();
 

@@ -8,6 +8,7 @@ public class ShipData
     public SerializableVector3 position;
     public SerializableRotation rotation;
     public bool powerUpSeed, poewerUpField;
+    public int weaponLvl;
 
     public ShipData(ShipModel ship)
     {
@@ -16,6 +17,7 @@ public class ShipData
         rotation = new SerializableRotation(ship.transform.rotation);
         poewerUpField = ship.powerUp;
         poewerUpField = ship.powerUpSpeed;
+        weaponLvl = ship.weapon.currentLevel;
     }
 
 }

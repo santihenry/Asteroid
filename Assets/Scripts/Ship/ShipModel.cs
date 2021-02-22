@@ -41,7 +41,7 @@ public class ShipModel : MonoBehaviour
 
 
     public Transform playerTrans;
-    public Command buttonW, buttonS, buttonA, buttonD, buttonB, buttonZ, buttonR;
+    public Command buttonW, buttonS, buttonA, buttonD, buttonB, buttonZ, buttonR,shootButton,nextWeaponButton, prevtWeaponButton;
     public static List<Command> oldCommands = new List<Command>();
     private Vector3 startPos;
     public Coroutine replayCoroutine;

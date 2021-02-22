@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using KennethDevelops.Serialization;
 
 
 public class LifeSystem : MonoBehaviour, IObserver
@@ -19,7 +20,23 @@ public class LifeSystem : MonoBehaviour, IObserver
             return _intance;
         }
     }
-    
+
+
+
+    public void SaveStats()
+    {
+        SaveManager.SaveLifeStats(this);
+    }
+
+    public void LoadStats()
+    {
+
+        LifeData lifeeData = SaveManager.LoadLifeStats();
+
+        lifes = lifeeData.lifes;
+
+    }
+
 
     void Start()
     {

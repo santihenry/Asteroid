@@ -9,14 +9,20 @@ public class Sounds : MonoBehaviour
     public static int movementTurbo = 1;
     public static int loseLife = 2;
 
+
+    //Bullet
+    public static int hit = 1;
     //SoundLazer
     public static int shootLazer = 0;
-
     //SoundRocket
     public static int shootRocket = 0;
+
 
     //Asteroids:
     public static int smallAsteroidsExplosion = 0;
     public static int mediumAsteroidsExplosion = 1;
     public static int BigAsteroidsExplosion = 2;
+
+
+
 }

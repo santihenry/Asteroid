@@ -14,4 +14,9 @@ public class FlyweightWeapon : MonoBehaviour
         fireRate = .3f
     };
 
+    public static Flyweight Granadas = new Flyweight
+    {
+        fireRate = .2f
+    };
+
 }

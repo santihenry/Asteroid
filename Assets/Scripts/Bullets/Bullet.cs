@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     public List<AudioClip> allSounds;
     private AudioSource source;
     public GameObject hitFx;
+    public LayerMask layerMask;
+
 
     public Bullet(Vector3 dir,ObjectPool<Bullet> bulletPool)
     {
@@ -26,7 +28,7 @@ public class Bullet : MonoBehaviour
 
     public Bullet SetInitPos(Vector3 pos)
     {
-        transform.position = pos;
+        transform.position = pos;      
         return this;
 
     }
@@ -74,15 +76,32 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    public void Explotion()
+    {
+        foreach (var item in Physics.OverlapSphere(transform.position,_flyweight.radius,layerMask))
+        {
+            item.GetComponent<Asteroids>().TakeDamage = _flyweight.damage;
+        }
+        Death();      
+    }
+
 
 
     public void Death()
     {
-            var fx = Instantiate(hitFx, transform.position, transform.rotation);
-            Destroy(fx, .5f);
-            _currentTime = 0;
-            TurnOff(this);
-            pool.Recycle(this);
+        if ( _flyweight.explosiveBullet && (!source.isPlaying || source.clip != allSounds[Sounds.hit]))
+        {
+            GameObject f = new GameObject();
+            f.name = "ExplotionSound";
+            f.AddComponent<AudioSource>().clip = allSounds[Sounds.hit];
+            f.GetComponent<AudioSource>().Play();
+            Destroy(f, .3f);
+        }
+        var fx = Instantiate(hitFx, transform.position, transform.rotation);
+        Destroy(fx, .5f);
+        _currentTime = 0;
+        TurnOff(this);
+        pool.Recycle(this);
     }
 
     

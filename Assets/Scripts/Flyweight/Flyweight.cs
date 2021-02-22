@@ -10,7 +10,10 @@ public class Flyweight : MonoBehaviour
     public float lifeTime;
     public float fireRate;
     public float maxHealth;
-    public int sound;
+    public int shotSound;
+    public int hitSound;
     public float rotateSpeed;
     public TypesAsteroids type;
+    public bool explosiveBullet;
+    public float radius;
 }
