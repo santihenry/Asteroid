@@ -43,12 +43,69 @@ public class ShipController : MonoBehaviour, IObservable
 
         StartReplay();
 
+        PowerUpFieldForce();
+        PowerUpSpeed();
+
         if (Input.GetKey(KeyCode.Space))
         {
             _model.weapon.Shoot();
         }
 
         ChangeWeapon();
+    }
+
+
+    public void PowerUpSpeed()
+    {
+        if (_model.timeSpeed > _model.TimeWithSpeedMax)
+        {
+            _model.powerUpSpeed = false;
+            _model.timeSpeed = 0;
+        }
+        if (_model.powerUpSpeed == true)
+        {
+            _model.turbo.SetActive(true);
+            _model.timeSpeed += Time.deltaTime;
+        }
+        else if (_model.powerUpSpeed == false)
+        {
+            _model.turbo.SetActive(false);
+            _model.timeSpeed = 0f;
+        }
+    }
+
+    public void PowerUpFieldForce()
+    {
+        if (_model.time > _model.TimeWithPowerUp)
+        {
+            _model.powerUp = false;
+            _model.time = 0;
+        }
+        if (_model.powerUp)
+        {
+            _model.forceField.SetActive(true);
+            _model.time += Time.deltaTime;
+        }
+        else if (!_model.powerUp)
+        {
+            _model.forceField.SetActive(false);
+            _model.time = 0f;
+        }
+    }
+
+    public void Save()
+    {
+        SaveManager.SaveShipStats(_model);
+    }
+
+    public void Load()
+    {
+        ShipData data = SaveManager.LoadShipStats();
+        _model.currentWeapon = data.currentIndexWeapon;
+        transform.position = data.position.ToVector3();
+        transform.rotation = data.rotation.ToQuaternion();
+        _model.powerUp = data.poewerUpField;
+        _model.powerUpSpeed = data.powerUpSeed;
     }
 
 
@@ -167,6 +224,22 @@ public class ShipController : MonoBehaviour, IObservable
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {/*
+        if (other.gameObject.GetComponent<PowerUp>().type == TypesPoweUp.forceField/)
+        {
+            _model.powerUp = true;
+            _model.time += Time.deltaTime;
+        }
+
+        if (other.gameObject.GetComponent<PowerUp>().type == TypesPoweUp.forceField)
+        {
+            _model.powerUpSpeed = true;
+            _model.timeSpeed += Time.deltaTime;
+        }*/
+    }
+
+
     private void LoseLife()
     {
         if (_model.death)
@@ -216,4 +289,13 @@ public class ShipController : MonoBehaviour, IObservable
         if (_model.allObservers.Contains(obs))
             _model.allObservers.Remove(obs);
     }
+
+    public ShipModel GetModel
+    {
+        get
+        {
+            return _model;
+        }
+    }
+
 }

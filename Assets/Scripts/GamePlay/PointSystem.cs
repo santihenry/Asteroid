@@ -11,8 +11,11 @@ public class PointSystem : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            GameManager.Instance.Win();
+        }
 
-        
     }
 
 

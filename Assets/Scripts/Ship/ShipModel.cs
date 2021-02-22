@@ -26,7 +26,18 @@ public class ShipModel : MonoBehaviour
     public List<Weapons> weapons = new List<Weapons>();
     public int currentWeapon = 0;
 
+
+    public bool powerUp, powerUpSpeed;
+
     public List<IObserver> allObservers = new List<IObserver>();
+
+    public GameObject deathFX,turbo,forceField;
+
+    public float time;
+    public float timeSpeed;
+    float timeWithPowerUp = 6f;
+    float timeWithSpeedMax = 3f;
+
 
 
     public Transform playerTrans;
@@ -65,6 +76,29 @@ public class ShipModel : MonoBehaviour
         set
         {
             startPos = value;
+        }
+    }
+
+    public float TimeWithPowerUp
+    {
+        get
+        {
+            return timeWithPowerUp;
+        }
+        set
+        {
+            timeWithPowerUp = value;
+        }
+    }
+    public float TimeWithSpeedMax
+    {
+        get
+        {
+            return timeWithSpeedMax;
+        }
+        set
+        {
+            timeWithSpeedMax = value;
         }
     }
 

@@ -12,4 +12,5 @@ public class Flyweight : MonoBehaviour
     public float maxHealth;
     public int sound;
     public float rotateSpeed;
+    public TypesAsteroids type;
 }

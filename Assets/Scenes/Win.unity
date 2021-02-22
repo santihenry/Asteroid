@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 173544796}
+  - component: {fileID: 173544797}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -150,6 +151,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173544797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173544795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b2baaebd01690408380f3b777e6264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &241856882
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +175,7 @@ GameObject:
   - component: {fileID: 241856886}
   - component: {fileID: 241856885}
   - component: {fileID: 241856884}
+  - component: {fileID: 241856887}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -233,7 +247,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 241856885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173544797}
+        m_MethodName: Menu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &241856885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +296,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241856882}
   m_CullTransparentMesh: 0
+--- !u!114 &241856887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241856882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_MainMenu
+  manager: {fileID: 0}
+  myView: {fileID: 1589236103}
 --- !u!1 &748064337
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.13798285, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.027116776, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -421,8 +461,9 @@ GameObject:
   - component: {fileID: 1160818344}
   - component: {fileID: 1160818346}
   - component: {fileID: 1160818345}
+  - component: {fileID: 1160818347}
   m_Layer: 5
-  m_Name: loseTxt
+  m_Name: WinTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,7 +506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you lose
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -534,13 +575,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1160818345}
-    characterCount: 8
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -565,6 +606,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160818343}
   m_CullTransparentMesh: 0
+--- !u!114 &1160818347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160818343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_Win
+  manager: {fileID: 0}
+  myView: {fileID: 1160818345}
 --- !u!1 &1257639927
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,8 +704,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -950,8 +1006,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1034,6 +1090,7 @@ GameObject:
   - component: {fileID: 1733158756}
   - component: {fileID: 1733158755}
   - component: {fileID: 1733158754}
+  - component: {fileID: 1733158757}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -1105,7 +1162,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1733158755}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173544797}
+        m_MethodName: LevelOne
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1733158755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,6 +1211,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733158752}
   m_CullTransparentMesh: 0
+--- !u!114 &1733158757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733158752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_Restart
+  manager: {fileID: 0}
+  myView: {fileID: 1839999143}
 --- !u!1 &1762764035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1312,7 @@ GameObject:
   - component: {fileID: 1774405111}
   - component: {fileID: 1774405110}
   - component: {fileID: 1774405109}
+  - component: {fileID: 1774405112}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1300,7 +1384,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1774405110}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173544797}
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1774405110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1433,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774405107}
   m_CullTransparentMesh: 0
+--- !u!114 &1774405112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774405107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b150e9395fe364687cba75ea3217e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ID_Exit
+  manager: {fileID: 0}
+  myView: {fileID: 1257639929}
 --- !u!1 &1782487010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,8 +1632,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

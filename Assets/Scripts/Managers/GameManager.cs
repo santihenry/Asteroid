@@ -7,12 +7,51 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager _Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
+
+    public GameObject PauseUI;
+    public static bool gamePuse = false;
+
+
 
     private void Awake()
     {
-        _Instance = this;
+        Instance = this;
     }
+
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gamePuse)
+                Resume();
+            else
+                Pause();
+        }
+
+    }
+
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        gamePuse = false;
+        PauseUI.SetActive(false);
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0;
+        gamePuse = true;
+        if(PauseUI != null)
+        PauseUI.SetActive(true);
+    }
+
+
+
+
 
     public void ExitGame()
     {
@@ -36,6 +75,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Lose");
+    }
+
+    public void Win()
+    {
+        SceneManager.LoadScene("Win");
+    }
 
 
 }

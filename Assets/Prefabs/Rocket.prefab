@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSounds:
   - {fileID: 8300000, guid: ddf9ca5495a549b4c9218d5715f61a9c, type: 3}
-  source: {fileID: 0}
+  hitFx: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
 --- !u!54 &7684855593161903058
 Rigidbody:
   m_ObjectHideFlags: 0
