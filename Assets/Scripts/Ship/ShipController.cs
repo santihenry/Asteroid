@@ -47,6 +47,7 @@ public class ShipController : MonoBehaviour, IObservable
         _model.weapon = _model.weapons[0];
         _model.col = gameObject.GetComponent<Collider>();
         _model.speedDecorator = new SpeedPowerUpDecorator();
+        _model.forceFieldDecorator = new ForceFieldPowerUp();
 
     }
 
@@ -65,8 +66,14 @@ public class ShipController : MonoBehaviour, IObservable
             if(_model.TimeWithSpeedMax - _model.currentTime < 0)
             {
                 _model.speedDecorator.Stop(_model);
+            }            
+        }
+        if (_model.powerUp)
+        {
+            if(_model.time > _model.TimeWithPowerUp)
+            {
+                _model.forceFieldDecorator.Stop(_model);
             }
-            
         }
 
 

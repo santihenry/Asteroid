@@ -29,7 +29,7 @@ public class ShipModel : MonoBehaviour
     public int currentWeapon = 0;
 
 
-    public bool powerUp, powerUpSpeed;
+    public bool powerUp,powerUpSpeed;
 
     public List<IObserver> allObservers = new List<IObserver>();
 
@@ -47,6 +47,7 @@ public class ShipModel : MonoBehaviour
     public List<ICommand> allCommands = new List<ICommand>();
 
     public SpeedPowerUpDecorator speedDecorator;
+    public ForceFieldPowerUp forceFieldDecorator;
 
     /*
     public Transform playerTrans;

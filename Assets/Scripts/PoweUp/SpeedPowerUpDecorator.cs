@@ -14,7 +14,7 @@ public class SpeedPowerUpDecorator : IDecorator<ShipModel>
             data.speed = data.speed + data.speed;
             data.turbo.SetActive(true);
         }
-       // if (next != null) next.Execute(data);
+        // if (next != null) next.Execute(data);
     }
 
     public void Stop(ShipModel data)

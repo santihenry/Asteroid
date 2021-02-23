@@ -72,7 +72,10 @@ public class PowerUp : MonoBehaviour
                     ship.speedDecorator.Execute(ship);
                 }
                 if (type == TypesPoweUp.forceField)
+                {
                     ship.powerUp = true;
+                    ship.forceFieldDecorator.Execute(ship);
+                }
                 if (type == TypesPoweUp.upgradeWeapon1)
                     ship.weapon.currentLevel = 1;
                 if (type == TypesPoweUp.upgradeWeapon2)
