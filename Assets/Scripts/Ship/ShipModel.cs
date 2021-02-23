@@ -48,6 +48,9 @@ public class ShipModel : MonoBehaviour
 
     public SpeedPowerUpDecorator speedDecorator;
     public ForceFieldPowerUp forceFieldDecorator;
+    public DoubleBulletDecoretor doubleBullet;
+    public TripleBulletDecorator tripleBullet;
+    public DebuffBulletDecorator debufBullet;
 
     /*
     public Transform playerTrans;

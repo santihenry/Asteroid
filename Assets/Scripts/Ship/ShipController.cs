@@ -48,7 +48,9 @@ public class ShipController : MonoBehaviour, IObservable
         _model.col = gameObject.GetComponent<Collider>();
         _model.speedDecorator = new SpeedPowerUpDecorator();
         _model.forceFieldDecorator = new ForceFieldPowerUp();
-
+        _model.doubleBullet = new DoubleBulletDecoretor();
+        _model.tripleBullet = new TripleBulletDecorator();
+        _model.debufBullet = new DebuffBulletDecorator();
     }
 
     void Update()
@@ -58,7 +60,7 @@ public class ShipController : MonoBehaviour, IObservable
         if (Time.deltaTime == 0 || _model.death) return;
         
 
-        PowerUpFieldForce();
+        
 
 
         if (_model.powerUpSpeed)
@@ -70,7 +72,7 @@ public class ShipController : MonoBehaviour, IObservable
         }
         if (_model.powerUp)
         {
-            if(_model.time > _model.TimeWithPowerUp)
+            if(_model.TimeWithPowerUp - _model.currentTime<=0)
             {
                 _model.forceFieldDecorator.Stop(_model);
             }
@@ -96,24 +98,24 @@ public class ShipController : MonoBehaviour, IObservable
 
     }
 
-    public void PowerUpFieldForce()
-    {
-        if (_model.time > _model.TimeWithPowerUp)
-        {
-            _model.powerUp = false;
-            _model.time = 0;
-        }
-        if (_model.powerUp)
-        {
-            _model.forceField.SetActive(true);
-            _model.time += Time.deltaTime;
-        }
-        else if (!_model.powerUp)
-        {
-            _model.forceField.SetActive(false);
-            _model.time = 0f;
-        }
-    }
+    //public void PowerUpFieldForce()
+    //{
+    //    if (_model.time > _model.TimeWithPowerUp)
+    //    {
+    //        _model.powerUp = false;
+    //        _model.time = 0;
+    //    }
+    //    if (_model.powerUp)
+    //    {
+    //        _model.forceField.SetActive(true);
+    //        _model.time += Time.deltaTime;
+    //    }
+    //    else if (!_model.powerUp)
+    //    {
+    //        _model.forceField.SetActive(false);
+    //        _model.time = 0f;
+    //    }
+    //}
 
     public void Save()
     {

@@ -77,11 +77,18 @@ public class PowerUp : MonoBehaviour
                     ship.forceFieldDecorator.Execute(ship);
                 }
                 if (type == TypesPoweUp.upgradeWeapon1)
-                    ship.weapon.currentLevel = 1;
+                {
+                    ship.doubleBullet.Execute(ship);
+                }
                 if (type == TypesPoweUp.upgradeWeapon2)
-                    ship.weapon.currentLevel = 2;
+                {
+                    ship.tripleBullet.Execute(ship); 
+                }
                 if (type == TypesPoweUp.downgradeWeapon)
-                    ship.weapon.currentLevel = 0;
+                {
+                    ship.debufBullet.Execute(ship);
+
+                }
             }
             Destroy(gameObject);
         }

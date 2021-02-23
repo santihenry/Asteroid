@@ -3473,11 +3473,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArea: {x: 105, y: 55}
   PowerUP:
+  - {fileID: 8105442861027233822, guid: 730bc8a8cfbe1ed479d21a20756e56fe, type: 3}
   - {fileID: 4067767485089505060, guid: 793b0ad2723312541ae048c8dac1b49f, type: 3}
-  - {fileID: 4067767485089505060, guid: 793b0ad2723312541ae048c8dac1b49f, type: 3}
-  - {fileID: 4067767485089505060, guid: 793b0ad2723312541ae048c8dac1b49f, type: 3}
-  - {fileID: 4067767485089505060, guid: 793b0ad2723312541ae048c8dac1b49f, type: 3}
-  - {fileID: 4067767485089505060, guid: 793b0ad2723312541ae048c8dac1b49f, type: 3}
+  - {fileID: 8105442861027233822, guid: 6a1f339fb45348d40bb2ccd30b0081df, type: 3}
+  - {fileID: 8105442861027233822, guid: 23d5b6c19db98d14d93300dd411f3499, type: 3}
+  - {fileID: 8105442861027233822, guid: b377fadb873bb91438a4c70803a2764a, type: 3}
 --- !u!4 &1763645904
 Transform:
   m_ObjectHideFlags: 0
