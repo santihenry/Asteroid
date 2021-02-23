@@ -6,8 +6,9 @@ public class SpawnerPowerUp : MonoBehaviour
 {
     public Vector2 spawnArea;
     public GameObject[] PowerUP;
-    int randomSpawnPoint, randomPoweUp;
-
+    [Range(10,40)]
+    public float spawnFrecuency;
+    int randomPoweUp;
     float _currentTime;
 
     
@@ -18,7 +19,7 @@ public class SpawnerPowerUp : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(_currentTime >= 6)
+        if(_currentTime >= spawnFrecuency)
         {
             if(FindObjectOfType<PowerUp>() == null)
                 SpawnPowerUp();

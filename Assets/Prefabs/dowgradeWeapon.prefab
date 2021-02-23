@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 8105442861027233823}
   - component: {fileID: 738218201566583112}
   - component: {fileID: 8644551246033972348}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: dowgradeWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

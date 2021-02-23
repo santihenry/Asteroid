@@ -10,6 +10,7 @@ public class ForceFieldPowerUp : IDecorator<ShipModel>
     {
         if (data.powerUp)
         {
+            data.currentTime = 0;
             data.forceField.SetActive(true);
         }    
     }

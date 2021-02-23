@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Patterns;
 
 
 public class ShipModel : MonoBehaviour
@@ -51,14 +50,6 @@ public class ShipModel : MonoBehaviour
     public DoubleBulletDecoretor doubleBullet;
     public TripleBulletDecorator tripleBullet;
     public DebuffBulletDecorator debufBullet;
-
-    /*
-    public Transform playerTrans;
-    public Command buttonW, buttonS, buttonA, buttonD, buttonB, buttonZ, buttonR,shootButton,nextWeaponButton, prevtWeaponButton;
-    public static List<Command> oldCommands = new List<Command>();
-    public Coroutine replayCoroutine;
-    public static bool shouldStartReplay;
-    public bool isReplaying;*/
 
     private Vector3 startPos;
 

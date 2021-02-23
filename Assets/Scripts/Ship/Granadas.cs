@@ -18,24 +18,19 @@ public class Granadas : Weapons
         SetFlyweight(FlyweightWeapon.Granadas);
     }
 
-    void Start()
-    {
-        
-    }
-
     
     void Update()
     {
         currentTime += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.G) && bulletSatck.Any())
-        {
-            StartCoroutine(Sequence(bulletSatck));
-            canDropGranade = false;
-        }
-
     }
 
+
+    public void Exlotion()
+    {
+        if (!bulletSatck.Any()) return;
+        StartCoroutine(Sequence(bulletSatck));
+        canDropGranade = false;
+    }
 
     IEnumerator Sequence(Queue<Bullet> l)
     {
