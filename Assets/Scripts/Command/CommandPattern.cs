@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace Patterns
 {
+    
+    /*
     public abstract class Command
     {
         protected float moveDistance = 1f;
@@ -17,11 +19,11 @@ namespace Patterns
         protected float _interpolation = 50;
         protected float _turnSpeed = 200;
         protected float Aceleration = Input.GetAxisRaw("Vertical");
-
-
         protected List<Weapons> weaponsList = new List<Weapons>();
         protected Weapons weapon;
         protected static int currentWeapon;
+
+
 
         public virtual void Init(ShipModel player) { }
 
@@ -58,6 +60,9 @@ namespace Patterns
         }
     }
 
+
+
+    
     public class MoveLeft : Command
     {
         public override void Execute(Transform boxTrans, Command command)
@@ -240,5 +245,7 @@ namespace Patterns
             throw new NotImplementedException();
         }
     }
+    */
+
 
 }

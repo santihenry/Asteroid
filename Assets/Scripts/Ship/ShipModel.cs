@@ -21,7 +21,6 @@ public class ShipModel : MonoBehaviour
     public bool death = false;
     public float respawnTime = 2f;
     public float currentTime;
-    public bool inmune=false;
     public float inmuneDuration = 3;
     public bool test = false;
 
@@ -44,17 +43,22 @@ public class ShipModel : MonoBehaviour
     float timeWithSpeedMax = 3f;
 
 
+    public Dictionary<KeyCode, ICommand> keysCommands = new Dictionary<KeyCode, ICommand>();
+    public List<ICommand> allCommands = new List<ICommand>();
 
+    public SpeedPowerUpDecorator speedDecorator;
+
+    /*
     public Transform playerTrans;
     public Command buttonW, buttonS, buttonA, buttonD, buttonB, buttonZ, buttonR,shootButton,nextWeaponButton, prevtWeaponButton;
     public static List<Command> oldCommands = new List<Command>();
-    private Vector3 startPos;
     public Coroutine replayCoroutine;
     public static bool shouldStartReplay;
-    public bool isReplaying;
+    public bool isReplaying;*/
+
+    private Vector3 startPos;
 
 
-    public Renderer[] renderer;
     public Collider col;
 
     public List<AudioClip> allSounds;
@@ -105,6 +109,15 @@ public class ShipModel : MonoBehaviour
         {
             timeWithSpeedMax = value;
         }
+    }
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+
     }
 
 }

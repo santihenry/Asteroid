@@ -67,7 +67,10 @@ public class PowerUp : MonoBehaviour
             {
                 var ship = other.gameObject.GetComponent<ShipController>().GetModel;
                 if (type == TypesPoweUp.turbo)
+                {                   
                     ship.powerUpSpeed = true;
+                    ship.speedDecorator.Execute(ship);
+                }
                 if (type == TypesPoweUp.forceField)
                     ship.powerUp = true;
                 if (type == TypesPoweUp.upgradeWeapon1)

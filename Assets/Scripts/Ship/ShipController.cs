@@ -8,18 +8,27 @@ public class ShipController : MonoBehaviour, IObservable
     ShipModel _model;
 
     private void Awake()
-    {      
+    {
         _model = GetComponent<ShipModel>();
         _model.Source = GetComponent<AudioSource>();
-        
+
         _model.weapons.Add(GetComponentInChildren<MachineGun>());
         _model.weapons.Add(GetComponentInChildren<RocketGun>());
         _model.weapons.Add(GetComponentInChildren<Granadas>());
+
+
+        _model.keysCommands.Add(KeyCode.W, new FowardCommand());
+        _model.keysCommands.Add(KeyCode.A, new RightCommand());
+        _model.keysCommands.Add(KeyCode.D, new LeftCommand());
+        _model.keysCommands.Add(KeyCode.Space, new ShootCommand());
+
+        _model.keysCommands[KeyCode.Space].Init(_model.gameObject);
+       
     }
 
     private void Start()
     {
-        
+        /*
         _model.buttonW = new MoveFoward();
         _model.buttonA = new MoveLeft();
         _model.buttonD = new MoveRight();
@@ -33,66 +42,51 @@ public class ShipController : MonoBehaviour, IObservable
         _model.shootButton.Init(_model);
         _model.prevtWeaponButton.Init(_model);
         _model.nextWeaponButton.Init(_model);
-
-
-
+        */
 
         _model.weapon = _model.weapons[0];
-
-
-        _model.renderer = gameObject.GetComponentsInChildren<Renderer>();
         _model.col = gameObject.GetComponent<Collider>();
+        _model.speedDecorator = new SpeedPowerUpDecorator();
 
     }
 
     void Update()
     {
-
         _model.currentTime += Time.deltaTime;
         LoseLife();
         if (Time.deltaTime == 0 || _model.death) return;
-
-        if (!_model.isReplaying)
-            HandleInput();
-
-        StartReplay();
+        
 
         PowerUpFieldForce();
-        PowerUpSpeed();
 
-        /*
-        if (_model.inmune)
+
+        if (_model.powerUpSpeed)
         {
-            StartCoroutine(Inmune());
-            if(_model.inmuneDuration - _model.currentTime <= 0)
+            if(_model.TimeWithSpeedMax - _model.currentTime < 0)
             {
-                StopCoroutine(Inmune());
-                _model.inmune = false;
-                _model.fbx.SetActive(true);
+                _model.speedDecorator.Stop(_model);
+            }
+            
+        }
+
+
+        foreach (var comand in _model.keysCommands)
+        {
+            if (Input.GetKey(comand.Key))
+            {
+                comand.Value.Execute(_model.gameObject);
+                _model.allCommands.Add(comand.Value);
             }
         }
-        */
-
-    }
 
 
-    public void PowerUpSpeed()
-    {
-        if (_model.timeSpeed > _model.TimeWithSpeedMax)
+        if (Input.GetKey(KeyCode.R) && _model.allCommands.Count>0)
         {
-            _model.powerUpSpeed = false;
-            _model.timeSpeed = 0;
+            var act = _model.allCommands[_model.allCommands.Count - 1];
+            act.Undo(_model.gameObject);
+            _model.allCommands.RemoveAt(_model.allCommands.Count - 1);
         }
-        if (_model.powerUpSpeed == true)
-        {
-            _model.turbo.SetActive(true);
-            _model.timeSpeed += Time.deltaTime;
-        }
-        else if (_model.powerUpSpeed == false)
-        {
-            _model.turbo.SetActive(false);
-            _model.timeSpeed = 0f;
-        }
+
     }
 
     public void PowerUpFieldForce()
@@ -135,7 +129,7 @@ public class ShipController : MonoBehaviour, IObservable
     private void HandleInput()
     {
         float Aceleration = Input.GetAxisRaw("Vertical");
-
+        /*
         if (Input.GetKey(KeyCode.A))
         {
             _model.buttonA.Execute(_model.playerTrans, _model.buttonA);
@@ -169,7 +163,7 @@ public class ShipController : MonoBehaviour, IObservable
         if (Input.GetKeyDown(KeyCode.E))
         {
             _model.nextWeaponButton.Execute( _model.nextWeaponButton);
-        }
+        }*/
 
 
         if (Aceleration > 0)
@@ -182,6 +176,8 @@ public class ShipController : MonoBehaviour, IObservable
         }
     }
 
+
+    /*
     private void StartReplay()
     {
 
@@ -196,7 +192,9 @@ public class ShipController : MonoBehaviour, IObservable
             _model.replayCoroutine = StartCoroutine(ReplayCommands(_model.playerTrans));
         }
     }
+    */
 
+    /*
     IEnumerator ReplayCommands(Transform boxTrans)
     {
         _model.isReplaying = true;
@@ -209,7 +207,7 @@ public class ShipController : MonoBehaviour, IObservable
         }
         _model.isReplaying = false;
     }
-
+    */
 
 
     private void OnCollisionEnter(Collision collision)
@@ -236,23 +234,20 @@ public class ShipController : MonoBehaviour, IObservable
 
             _model.speed = 0;
 
-            for (int i = 0; i < _model.renderer.Length; i++)
-            {
-                _model.fbx.SetActive(false);
-                _model.col.enabled = false;
-            }
-          
+            _model.fbx.SetActive(false);
+            _model.col.enabled = false;
+            _model.speedDecorator.Stop(_model);
+
             if (_model.respawnTime - _model.currentTime < 0)
             {
-                for (int i = 0; i < _model.renderer.Length; i++)
-                {
-                    _model.fbx.SetActive(true);
-                    _model.col.enabled = true;
-                }
+
+                _model.fbx.SetActive(true);
+                _model.col.enabled = true;
+
+       
                 _model.speed = 60;
                 _model.currentTime = 0;
                 _model.death = false;
-                //_model.inmune = true;
             }
         }
     }

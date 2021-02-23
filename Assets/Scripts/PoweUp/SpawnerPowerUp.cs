@@ -18,7 +18,7 @@ public class SpawnerPowerUp : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(_currentTime >= 3)
+        if(_currentTime >= 6)
         {
             if(FindObjectOfType<PowerUp>() == null)
                 SpawnPowerUp();
