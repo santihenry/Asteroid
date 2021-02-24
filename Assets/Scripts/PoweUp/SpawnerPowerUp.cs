@@ -39,7 +39,7 @@ public class SpawnerPowerUp : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.cyan / 3;
+        Gizmos.color = Color.cyan / 2;
         Gizmos.DrawCube(new Vector3(0, 0, 0), new Vector3(spawnArea.x * 2, 0, spawnArea.y * 2));
 
     }

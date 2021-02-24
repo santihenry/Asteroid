@@ -162,7 +162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8171482312536957882, guid: 3e75774a779ca034383e995be0273492,
+  m_Sprite: {fileID: -2280096627607650824, guid: 3e75774a779ca034383e995be0273492,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 738218201566583112}
   - component: {fileID: 8644551246033972348}
   m_Layer: 0
-  m_Name: speed
+  m_Name: shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   startWaitTime: 1
   speed: 80
   spawnArea: {x: 105, y: 55}
-  type: 0
+  type: 1
 --- !u!54 &8644551246033972348
 Rigidbody:
   m_ObjectHideFlags: 0
