@@ -151,6 +151,13 @@ public class Asteroids : MonoBehaviour
             pool.Recycle(this);
         }
 
+        if (other.gameObject.layer == 11)
+        {
+            TurnOff(this);
+            pool.Recycle(this);
+        }
+
+
     }
 
 }
