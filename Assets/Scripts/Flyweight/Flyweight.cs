@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flyweight : MonoBehaviour
+public class Flyweight 
 {
     public float speed;
     public float damage;
@@ -15,5 +15,5 @@ public class Flyweight : MonoBehaviour
     public float rotateSpeed;
     public TypesAsteroids type;
     public bool explosiveBullet;
-    public float radius;
+    public float explotionRadius;
 }

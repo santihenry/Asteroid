@@ -46,7 +46,9 @@ public class PowerUp : MonoBehaviour
 
     virtual public  void MoveRandom()
     {
+
         transform.position = Vector3.MoveTowards(transform.position, randomMoveSpot, speed * Time.deltaTime);
+        
         if (Vector3.Distance(transform.position, randomMoveSpot) < 0.2f)
         {
             if (waitTime - _currentTime <= 0)

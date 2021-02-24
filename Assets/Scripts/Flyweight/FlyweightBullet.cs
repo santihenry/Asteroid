@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyweightBullet : MonoBehaviour
+public class FlyweightBullet  
 {
     public static Flyweight simpleBullet = new Flyweight
     {
@@ -11,7 +11,7 @@ public class FlyweightBullet : MonoBehaviour
         lifeTime = 2,
         shotSound = Sounds.shootLazer,
         hitSound = Sounds.hit,
-        explosiveBullet = false
+        explosiveBullet = false,
     };
 
     public static Flyweight rocket = new Flyweight
@@ -22,7 +22,6 @@ public class FlyweightBullet : MonoBehaviour
         shotSound = Sounds.shootRocket,
         hitSound = Sounds.hit,
         explosiveBullet = false,
-        radius = 0
     };
 
     public static Flyweight superRocket = new Flyweight
@@ -33,7 +32,6 @@ public class FlyweightBullet : MonoBehaviour
         shotSound = Sounds.shootRocket,
         hitSound = Sounds.hit,
         explosiveBullet = false,
-        radius = 0
     };
 
     public static Flyweight Granadas = new Flyweight
@@ -44,7 +42,7 @@ public class FlyweightBullet : MonoBehaviour
         shotSound = Sounds.shootRocket,
         hitSound = Sounds.hit,
         explosiveBullet = true,
-        radius = 12
+        explotionRadius = 12
     };
 
 }
