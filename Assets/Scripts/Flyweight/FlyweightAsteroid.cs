@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyweightAsteroid : MonoBehaviour
+public class FlyweightAsteroid 
 {
     public static Flyweight asteroidSmall = new Flyweight
     {

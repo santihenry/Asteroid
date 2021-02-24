@@ -6,7 +6,7 @@ public class SpawnerPowerUp : MonoBehaviour
 {
     public Vector2 spawnArea;
     public GameObject[] PowerUP;
-    [Range(10,40)]
+    [Range(1,40)]
     public float spawnFrecuency;
     int randomPoweUp;
     float _currentTime;

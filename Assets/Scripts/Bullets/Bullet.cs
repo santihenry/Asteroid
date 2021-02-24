@@ -78,7 +78,7 @@ public class Bullet : MonoBehaviour
 
     public void Explotion()
     {
-        foreach (var item in Physics.OverlapSphere(transform.position,_flyweight.radius,layerMask))
+        foreach (var item in Physics.OverlapSphere(transform.position,_flyweight.explotionRadius,layerMask))
         {
             item.GetComponent<Asteroids>().TakeDamage = _flyweight.damage;
         }
