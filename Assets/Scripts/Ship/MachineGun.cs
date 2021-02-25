@@ -25,7 +25,7 @@ public class MachineGun : Weapons
             if (currentLevel < 0)
             {
                 prevLevel = currentLevel;
-                currentLevel = maxLevel;
+                currentLevel = _flyweight.maxLevel;
 
             }       
         }
@@ -34,19 +34,13 @@ public class MachineGun : Weapons
         {
             prevLevel = currentLevel;
             currentLevel++;
-            if (currentLevel > maxLevel)
+            if (currentLevel > _flyweight.maxLevel)
             {
                 prevLevel = currentLevel;
                 currentLevel = 0;
 
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            backShot = !backShot;
-        }
-
     }
 
     public override void Shoot()

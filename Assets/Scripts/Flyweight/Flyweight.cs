@@ -16,4 +16,5 @@ public class Flyweight
     public TypesAsteroids type;
     public bool explosiveBullet;
     public float explotionRadius;
+    public int maxLevel;
 }

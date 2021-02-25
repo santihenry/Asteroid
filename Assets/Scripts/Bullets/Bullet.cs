@@ -64,6 +64,7 @@ public class Bullet : MonoBehaviour
     {
         transform.position += _dir * _flyweight.speed * Time.deltaTime;
         Alive();
+        Rotarion();
     }
 
 
@@ -86,6 +87,10 @@ public class Bullet : MonoBehaviour
     }
 
 
+    void Rotarion()
+    {
+        transform.Rotate(new Vector3(Time.deltaTime * _flyweight.rotateSpeed, Time.deltaTime * _flyweight.rotateSpeed, Time.deltaTime * _flyweight.rotateSpeed), Space.Self);
+    }
 
     public void Death()
     {

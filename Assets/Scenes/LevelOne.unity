@@ -1221,7 +1221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 655252100}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Limits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4389,11 +4389,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5965281066741910643, guid: 5266e41cd05233948a1bc40ab0ef0da7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5966604881167708466, guid: 5266e41cd05233948a1bc40ab0ef0da7,
         type: 3}

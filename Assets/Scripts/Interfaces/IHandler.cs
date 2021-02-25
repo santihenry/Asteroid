@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IHandler<T> 
+public interface IHandler
 {
-
-    IHandler<T> SetNext(IHandler<T> next);
-    T handle(T b);
+    IHandler SetNext(IHandler nextHandler);
+    object Handle();
 }
