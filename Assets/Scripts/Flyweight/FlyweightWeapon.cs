@@ -6,7 +6,8 @@ public class FlyweightWeapon : MonoBehaviour
 {
     public static Flyweight machineGun = new Flyweight
     {
-        fireRate = .13f
+        fireRate = .13f,
+        maxLevel = 2
     };
 
     public static Flyweight rocket = new Flyweight

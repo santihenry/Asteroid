@@ -42,7 +42,8 @@ public class FlyweightBullet
         shotSound = Sounds.shootRocket,
         hitSound = Sounds.hit,
         explosiveBullet = true,
-        explotionRadius = 12
+        explotionRadius = 12,
+        rotateSpeed = Random.Range(16, 50)
     };
 
 }

@@ -13,6 +13,7 @@ public class ShipController : MonoBehaviour, IObservable
 
         _model.weapons.Add(GetComponentInChildren<MachineGun>());
         _model.weapons.Add(GetComponentInChildren<RocketGun>());
+        _model.weapons.Add(GetComponentInChildren<SuperRocketGun>());
         _model.weapons.Add(GetComponentInChildren<Granadas>());
 
         _model.keysCommands.Add(KeyCode.W, new FowardCommand());

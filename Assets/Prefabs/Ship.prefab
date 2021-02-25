@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 1322634073}
   - component: {fileID: 1322634072}
   - component: {fileID: 5965281066387911765}
+  - component: {fileID: 4826119393699423468}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -202,16 +203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2adf256c3c73745ad0b3b4faff04e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flyweight: {fileID: 0}
   spawnPos:
   - {fileID: 4273014846740416483}
   - {fileID: 2769825115545787064}
   - {fileID: 206623543122510845}
   prefab: {fileID: 2750131689042836350, guid: 691f1cb8cbbb7a64d930dae104e6d453, type: 3}
-  maxLevel: 2
   currentLevel: 0
   prevLevel: 0
-  backShot: 0
 --- !u!114 &1322634072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,14 +222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e310ee3cc346746b0203fb7295cbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flyweight: {fileID: 0}
   spawnPos:
-  - {fileID: 5965281066695102347}
+  - {fileID: 4273014846740416483}
   prefab: {fileID: -5777587506694510418, guid: a4c02437cb553714b8b4d2081b032766, type: 3}
-  maxLevel: 2
   currentLevel: 0
   prevLevel: 0
-  backShot: 0
 --- !u!114 &5965281066387911765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,14 +239,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd004b9eb492ca4e98b1784a275b3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flyweight: {fileID: 0}
   spawnPos:
   - {fileID: 4273014846740416483}
   prefab: {fileID: 6116064142005535387, guid: c125f700c7135a947aa8f7b9b208a9f5, type: 3}
-  maxLevel: 2
   currentLevel: 0
   prevLevel: 0
-  backShot: 0
+--- !u!114 &4826119393699423468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965281066695102346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296130f6b8fb7c147a4a21f89af04e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPos:
+  - {fileID: 4273014846740416483}
+  prefab: {fileID: -2091248488730323932, guid: 02a48341c3ad1794c8179653af842f01, type: 3}
+  currentLevel: 0
+  prevLevel: 0
 --- !u!1 &5965281066741910643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,8 +1154,8 @@ MonoBehaviour:
   death: 0
   respawnTime: 2
   currentTime: 0
-  inmune: 0
   inmuneDuration: 10
+  test: 0
   weapon: {fileID: 0}
   weapons: []
   currentWeapon: 0
@@ -1158,9 +1167,6 @@ MonoBehaviour:
   fbx: {fileID: 5965281066741910643}
   time: 0
   timeSpeed: 0
-  playerTrans: {fileID: 5964643706410161832}
-  isReplaying: 0
-  renderer: []
   col: {fileID: 0}
   allSounds:
   - {fileID: 8300000, guid: e47d587fe4422154b8921fa5b7db4b1f, type: 3}

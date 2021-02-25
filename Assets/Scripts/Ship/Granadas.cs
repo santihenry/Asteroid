@@ -4,13 +4,17 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-public class Granadas : Weapons
+public class Granadas : Weapons, IHandler
 {
     float currentTime;
     List<Bullet> listBullets = new List<Bullet>();
     Queue<Bullet> bulletSatck = new Queue<Bullet>();
 
     bool canDropGranade = true;
+    bool canExplode = false;
+    float time;
+    IHandler next;
+
 
     private void Awake()
     {
@@ -22,30 +26,28 @@ public class Granadas : Weapons
     void Update()
     {
         currentTime += Time.deltaTime;
+        time += Time.deltaTime;
     }
 
 
     public void Exlotion()
     {
-        if (!bulletSatck.Any()) return;
         StartCoroutine(Sequence(bulletSatck));
-        canDropGranade = false;
     }
 
     IEnumerator Sequence(Queue<Bullet> l)
     {
-        while(bulletSatck.Any())
+        while (bulletSatck.Any())
         {
-            var c4 = bulletSatck.Dequeue();
-            c4.Explotion();
-            yield return new WaitForSeconds(.12f);
+            Handle();
+            yield return new WaitForSeconds(_flyweight.fireRate);
         }
         canDropGranade = true;
     }
 
     public override void Shoot()
     {
-        if (_flyweight.fireRate - currentTime <= 0 && canDropGranade && bulletSatck.Count < 20)
+        if (_flyweight.fireRate - currentTime <= 0 && canDropGranade)
         {
             var bullet = bulletPool.GetObj().SetInitPos(spawnPos[0].position)
                                             .SetDir(transform.parent.forward)
@@ -65,4 +67,29 @@ public class Granadas : Weapons
         var b = Instantiate(prefab).SetFlyweight(FlyweightBullet.Granadas);
         return b;
     }
+
+    public IHandler SetNext(IHandler nextHandler)
+    {
+        next = nextHandler;
+        return next;
+    }
+
+    public object Handle()
+    {
+        if (bulletSatck.Any())
+        {
+            var explode = bulletSatck.Dequeue();
+            if (explode != null)
+            {
+                explode.Explotion();
+            }
+            return explode;
+        }
+        else
+        {
+            time = 0;
+            return next.Handle();
+        }
+    }
+
 }
