@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedPowerUpDecorator : IDecorator<ShipModel>
+public class SpeedPowerUpDecorator : IDecorator<ShipModel>  //MyA1-P2
 {
     public IDecorator<ShipModel> next;
 

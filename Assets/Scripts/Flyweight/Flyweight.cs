@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flyweight 
+public class Flyweight  //MyA1-P4
 {
     public float speed;
     public float damage;

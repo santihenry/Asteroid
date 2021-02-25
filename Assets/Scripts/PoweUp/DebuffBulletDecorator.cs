@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebuffBulletDecorator : IDecorator<ShipModel>
+public class DebuffBulletDecorator : IDecorator<ShipModel>      //MyA1-P2
 {
     public void Execute(ShipModel data)
     {

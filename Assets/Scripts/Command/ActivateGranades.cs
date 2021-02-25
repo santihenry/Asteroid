@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateGranades : ICommand
+public class ActivateGranades : ICommand    //MyA1-P3
 {
     ShipModel model;
 

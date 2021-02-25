@@ -35,7 +35,7 @@ public class ShipController : MonoBehaviour, IObservable
         _model.weapon = _model.weapons[0];
         _model.col = gameObject.GetComponent<Collider>();
         _model.speedDecorator = new SpeedPowerUpDecorator();
-        _model.forceFieldDecorator = new ForceFieldPowerUp();
+        _model.forceFieldDecorator = new ForceFieldPowerUpDecorator();
         _model.doubleBullet = new DoubleBulletDecoretor();
         _model.tripleBullet = new TripleBulletDecorator();
         _model.debufBullet = new DebuffBulletDecorator();

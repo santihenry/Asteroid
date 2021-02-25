@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootCommand : ICommand
+public class ShootCommand : ICommand    //MyA1-P3
 {
-    //List<Weapons> weaponsList = new List<Weapons>();
-    //Weapons weapon;
-    //static int currentWeapon;
-
 
     ShipModel model;
 

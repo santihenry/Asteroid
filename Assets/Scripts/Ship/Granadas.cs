@@ -74,7 +74,7 @@ public class Granadas : Weapons, IHandler
         return next;
     }
 
-    public object Handle()
+    public object Handle()  
     {
         if (bulletSatck.Any())
         {
