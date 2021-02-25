@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyweightBullet  
+public class FlyweightBullet    //MyA1-P4
 {
     public static Flyweight simpleBullet = new Flyweight
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyweightWeapon : MonoBehaviour
+public class FlyweightWeapon   //MyA1-P4
 {
     public static Flyweight machineGun = new Flyweight
     {

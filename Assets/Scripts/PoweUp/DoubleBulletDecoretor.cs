@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleBulletDecoretor : IDecorator<ShipModel>
+public class DoubleBulletDecoretor : IDecorator<ShipModel>      //MyA1-P2
 {
     public void Execute(ShipModel data)
     {

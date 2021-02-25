@@ -46,7 +46,7 @@ public class ShipModel : MonoBehaviour
     public List<ICommand> allCommands = new List<ICommand>();
 
     public SpeedPowerUpDecorator speedDecorator;
-    public ForceFieldPowerUp forceFieldDecorator;
+    public ForceFieldPowerUpDecorator forceFieldDecorator;
     public DoubleBulletDecoretor doubleBullet;
     public TripleBulletDecorator tripleBullet;
     public DebuffBulletDecorator debufBullet;

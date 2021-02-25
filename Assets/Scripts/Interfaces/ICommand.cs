@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICommand 
+public interface ICommand  //MyA1-P3
 {
     void Execute(GameObject obj);    
     void Undo(GameObject obj);

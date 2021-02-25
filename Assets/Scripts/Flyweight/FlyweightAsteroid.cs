@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyweightAsteroid 
+public class FlyweightAsteroid  //MyA1-P4
 {
     public static Flyweight asteroidSmall = new Flyweight
     {

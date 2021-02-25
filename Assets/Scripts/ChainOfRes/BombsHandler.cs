@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombsHandler : MonoBehaviour,IHandler
+public class BombsHandler : MonoBehaviour, IHandler  //MyA1-P5
 {
     IHandler _nextHandler;
 

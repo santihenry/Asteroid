@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightCommand : ICommand
+public class RightCommand : ICommand    //MyA1-P3
 {
 
     public void Execute(GameObject obj)
