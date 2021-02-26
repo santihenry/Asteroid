@@ -20,9 +20,13 @@ public class Asteroids : MonoBehaviour, IObservable
     public Asteroids SetInitPos(Vector3 pos)
     {
         transform.position = pos;
-        currentHealth = _flyweight.maxHealth;
+        currentHealth = _flyweight.maxHealth;     
         return this;
     }
+
+
+
+
 
 
     public Asteroids SetDir()
@@ -97,6 +101,7 @@ public class Asteroids : MonoBehaviour, IObservable
 
     void Death()
     {
+        PointSystem.Instance.TakeScore = _flyweight.score;
         InstantiateAsteroids(Random.Range(2, 5));
         TurnOff(this);
         pool.Recycle(this);
@@ -146,6 +151,7 @@ public class Asteroids : MonoBehaviour, IObservable
 
         if(other.gameObject.layer == 9)
         {
+            PointSystem.Instance.TakeScore = _flyweight.score;
             TurnOff(this);
             pool.Recycle(this);
         }

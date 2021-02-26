@@ -8,17 +8,7 @@ public class LifeSystem : MonoBehaviour, IObserver
 {
     public bool lose = false;
     public TMP_Text lifesTxt;
-    public int lifes = 2;
-
-    public static LifeSystem _intance;
-
-    public LifeSystem Instance
-    {
-        get
-        {
-            return _intance;
-        }
-    }
+    public int lifes;
 
 
 
