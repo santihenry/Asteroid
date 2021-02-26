@@ -6,17 +6,26 @@ using TMPro;
 public class PointSystem : MonoBehaviour, IObserver
 {
     public TMP_Text scoreTxt;
-    int score;
+    public int score;
     public static PointSystem Instance { get; private set; }
 
 
-    public void OnNotify(string eventName)
+    public void SaveStats()
     {
-        if (eventName == "TakeScore")
-        {
-            score += 20;
-        }
+        SaveManager.SaveScoreStats(this);
     }
+
+    public void LoadStats()
+    {
+
+        ScoreData scoreData = SaveManager.LoadScoreStats();
+
+        score = scoreData.score;
+
+    }
+
+
+
 
     private void Awake()
     {
@@ -32,6 +41,20 @@ public class PointSystem : MonoBehaviour, IObserver
             GameManager.Instance.Win();
         }
 
+    }
+
+
+    public void OnNotify(string eventName)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnNotify(string eventName, int scr)
+    {
+        if (eventName == "SumarPuntos")
+        {
+            score += scr;
+        }
     }
 
 

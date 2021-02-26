@@ -6,6 +6,8 @@ public class ShipController : MonoBehaviour, IObservable
 {
     ShipModel _model;
 
+    bool act;
+
     private void Awake()
     {
         _model = GetComponent<ShipModel>();
@@ -43,6 +45,7 @@ public class ShipController : MonoBehaviour, IObservable
 
     void Update()
     {
+       
         _model.currentTime += Time.deltaTime;
 
         LoseLife();
@@ -121,7 +124,7 @@ public class ShipController : MonoBehaviour, IObservable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Asteroids>())
+        if (collision.gameObject.GetComponent<Asteroids>() && !_model.inmortal)
         {
             _model.currentTime = 0f;
             Notify("LoseLife");
@@ -129,8 +132,12 @@ public class ShipController : MonoBehaviour, IObservable
         }
     }
 
+
+    float curr;
     private void LoseLife()
     {
+        curr += Time.deltaTime;
+
         if (_model.death)
         {
             _model.weapon.currentLevel = 0;
@@ -142,36 +149,40 @@ public class ShipController : MonoBehaviour, IObservable
             }
 
             _model.speed = 0;
-
             _model.fbx.SetActive(false);
             _model.col.enabled = false;
             _model.speedDecorator.Stop(_model);
 
             if (_model.respawnTime - _model.currentTime < 0)
             {
-
-                _model.fbx.SetActive(true);
-                _model.col.enabled = true;
-
-       
                 _model.speed = 60;
                 _model.currentTime = 0;
                 _model.death = false;
+                _model.inmortal = true;
+                curr = 0;
             }
         }
+
+        if (_model.inmortal)
+        {
+            if (.1f - curr <= 0)
+            {
+                curr = 0;
+                act = !act;
+                _model.fbx.SetActive(!_model.fbx.activeSelf);
+            }
+
+            if (_model.inmuneDuration - _model.currentTime < 0)
+            {
+                _model.inmortal = false;
+                _model.fbx.SetActive(true);
+                _model.col.enabled = true;
+            }
+
+        }
+
+
     }
-
-
-
-
-    IEnumerator Inmune()
-    {
-        yield return new WaitForSeconds(20f);
-        _model.fbx.SetActive(!_model.fbx.activeSelf);
-    }
-
-
-
 
     public void Notify(string eventName)
     {

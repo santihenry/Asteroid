@@ -28,7 +28,7 @@ public class ShipModel : MonoBehaviour
     public int currentWeapon = 0;
 
 
-    public bool powerUp,powerUpSpeed;
+    public bool powerUp,powerUpSpeed,inmortal;
 
     public List<IObserver> allObservers = new List<IObserver>();
 

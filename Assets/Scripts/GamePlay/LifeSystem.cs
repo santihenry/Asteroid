@@ -56,4 +56,9 @@ public class LifeSystem : MonoBehaviour, IObserver
        }
     }
 
+    public void OnNotify(string eventName, int score)
+    {
+        throw new System.NotImplementedException();
+    }
 }
+

@@ -747,6 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreTxt: {fileID: 877287964}
+  score: 0
 --- !u!1 &207053280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,12 +1122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efcd7b98e8e5b78438c88f6e2cfc3dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerUP:
-  - {fileID: 8105442861027233822, guid: 0bb5cc2bf831b4b4fa2c304d11a08fe9, type: 3}
-  - {fileID: 8105442861027233822, guid: 0f904ab561879874a962a3cbe21c7559, type: 3}
-  - {fileID: 8105442861027233822, guid: b377fadb873bb91438a4c70803a2764a, type: 3}
-  - {fileID: 8105442861027233822, guid: 6a1f339fb45348d40bb2ccd30b0081df, type: 3}
-  - {fileID: 8105442861027233822, guid: 23d5b6c19db98d14d93300dd411f3499, type: 3}
 --- !u!114 &387444120 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5966604881167708464, guid: 5266e41cd05233948a1bc40ab0ef0da7,
@@ -2222,8 +2217,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 364185690}
-        m_MethodName: Load
+      - m_Target: {fileID: 114890308}
+        m_MethodName: LoadStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2492,8 +2487,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 364185690}
-        m_MethodName: Save
+      - m_Target: {fileID: 114890308}
+        m_MethodName: SaveStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3938,12 +3933,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArea: {x: 105, y: 55}
   PowerUP:
-  - {fileID: 8105442861027233822, guid: 0f904ab561879874a962a3cbe21c7559, type: 3}
   - {fileID: 8105442861027233822, guid: b377fadb873bb91438a4c70803a2764a, type: 3}
-  - {fileID: 8105442861027233822, guid: 23d5b6c19db98d14d93300dd411f3499, type: 3}
   - {fileID: 8105442861027233822, guid: 0bb5cc2bf831b4b4fa2c304d11a08fe9, type: 3}
+  - {fileID: 8105442861027233822, guid: 0f904ab561879874a962a3cbe21c7559, type: 3}
+  - {fileID: 8105442861027233822, guid: 23d5b6c19db98d14d93300dd411f3499, type: 3}
   - {fileID: 8105442861027233822, guid: 6a1f339fb45348d40bb2ccd30b0081df, type: 3}
-  spawnFrecuency: 10
+  spawnFrecuency: 15
 --- !u!4 &1763645904
 Transform:
   m_ObjectHideFlags: 0
@@ -4078,7 +4073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lose: 0
   lifesTxt: {fileID: 1236176443}
-  lifes: 20
+  lifes: 4
 --- !u!1 &1869319088
 GameObject:
   m_ObjectHideFlags: 0

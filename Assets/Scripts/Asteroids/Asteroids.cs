@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroids : MonoBehaviour, IObservable
+public class Asteroids : MonoBehaviour
 {
 
     Flyweight _flyweight;
@@ -10,6 +10,7 @@ public class Asteroids : MonoBehaviour, IObservable
     public ObjectPool<Asteroids> pool;
     float currentHealth;
     public int spawnType;
+
 
     public Asteroids(Vector3 dir, ObjectPool<Asteroids> poolAsteroid)
     {
@@ -20,13 +21,9 @@ public class Asteroids : MonoBehaviour, IObservable
     public Asteroids SetInitPos(Vector3 pos)
     {
         transform.position = pos;
-        currentHealth = _flyweight.maxHealth;     
+        currentHealth = _flyweight.maxHealth;
         return this;
     }
-
-
-
-
 
 
     public Asteroids SetDir()
@@ -74,7 +71,6 @@ public class Asteroids : MonoBehaviour, IObservable
             return _flyweight;
         }
     }
-
 
     private void Update()
     {
@@ -137,7 +133,7 @@ public class Asteroids : MonoBehaviour, IObservable
     }
 
     public static void TurnOff(Asteroids asteroids)
-    {             
+    {
         asteroids.gameObject.SetActive(false);
         AsteroidManager.instance.ast.Remove(asteroids);
     }
@@ -151,7 +147,7 @@ public class Asteroids : MonoBehaviour, IObservable
 
         if(other.gameObject.layer == 9)
         {
-            PointSystem.Instance.TakeScore = _flyweight.score;
+            PointSystem.Instance.TakeScore = _flyweight.score;          
             TurnOff(this);
             pool.Recycle(this);
         }
@@ -165,20 +161,4 @@ public class Asteroids : MonoBehaviour, IObservable
 
     }
 
-
-
-    public void Notify(string eventName)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void SubEvent(IObserver obs)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void UnSubEvent(IObserver obs)
-    {
-        throw new System.NotImplementedException();
-    }
 }

@@ -14,7 +14,7 @@ public class Granadas : Weapons, IHandler
     bool canExplode = false;
     float time;
     IHandler next;
-    int maxGranades = 30;
+    int maxGranades = 10;
 
     private void Awake()
     {
@@ -32,6 +32,7 @@ public class Granadas : Weapons, IHandler
 
     public void Exlotion()
     {      
+        if(canDropGranade)
         StartCoroutine(Sequence(bulletSatck));
     }
 

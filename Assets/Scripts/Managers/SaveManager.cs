@@ -102,5 +102,37 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    // SCORE
+    public static void SaveScoreStats(PointSystem scoreStats)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+
+
+        string filePath = Application.persistentDataPath + "/Score_stats.dll";
+        FileStream fs = new FileStream(filePath, FileMode.Create);
+
+        ScoreData scoreData = new ScoreData(scoreStats);
+
+        bf.Serialize(fs, scoreData);
+        fs.Close();
+
+
+    }
+    public static ScoreData LoadScoreStats()
+    {
+        string filePath = Application.persistentDataPath + "/Score_stats.dll";
+        if (File.Exists(filePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream(filePath, FileMode.Open);
+            ScoreData scoreData = bf.Deserialize(fs) as ScoreData;
+            fs.Close();
+            return scoreData;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
 }
