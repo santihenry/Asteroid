@@ -14,7 +14,7 @@ public class Granadas : Weapons, IHandler
     bool canExplode = false;
     float time;
     IHandler next;
-
+    int maxGranades = 30;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class Granadas : Weapons, IHandler
 
 
     public void Exlotion()
-    {
+    {      
         StartCoroutine(Sequence(bulletSatck));
     }
 
@@ -47,7 +47,7 @@ public class Granadas : Weapons, IHandler
 
     public override void Shoot()
     {
-        if (_flyweight.fireRate - currentTime <= 0 && canDropGranade)
+        if (_flyweight.fireRate - currentTime <= 0 && canDropGranade && bulletSatck.Count < maxGranades)
         {
             var bullet = bulletPool.GetObj().SetInitPos(spawnPos[0].position)
                                             .SetDir(transform.parent.forward)
@@ -78,6 +78,7 @@ public class Granadas : Weapons, IHandler
     {
         if (bulletSatck.Any())
         {
+            canDropGranade = false;
             var explode = bulletSatck.Dequeue();
             if (explode != null)
             {

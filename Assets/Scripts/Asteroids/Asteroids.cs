@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroids : MonoBehaviour
+public class Asteroids : MonoBehaviour, IObservable
 {
 
     Flyweight _flyweight;
@@ -159,4 +159,20 @@ public class Asteroids : MonoBehaviour
 
     }
 
+
+
+    public void Notify(string eventName)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SubEvent(IObserver obs)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void UnSubEvent(IObserver obs)
+    {
+        throw new System.NotImplementedException();
+    }
 }
