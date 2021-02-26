@@ -8,7 +8,6 @@ public class AsteroidManager : MonoBehaviour
     public static AsteroidManager instance;
     public List<Asteroids> ast = new List<Asteroids>();
     int indexAstList;
-    //public GameObject prefabS, prefabM, prefabL;
 
     private void Awake()
     {
@@ -38,17 +37,7 @@ public class AsteroidManager : MonoBehaviour
             AsteroidData asteroidData = new AsteroidData();
             asteroidData.position = new SerializableVector3(ast[i].transform.position);
             asteroidData.dir = new SerializableVector3(ast[i].Dir);
-
-            /*
-            if (ast[i].type == TypesAsteroids.S)
-                asteroidData.types = TypesAsteroids.S;
-            else if (ast[i].type == TypesAsteroids.M)
-                asteroidData.types = TypesAsteroids.M;
-            else if (ast[i].type == TypesAsteroids.L)
-                asteroidData.types = TypesAsteroids.L;
-            */
-
-            asteroidData.types = ast[i].Fyweight.type;
+            asteroidData.type = ast[i].Fyweight.type;
 
             data.asteroidDataList.Add(asteroidData);
             indexAstList += 1;
@@ -73,41 +62,17 @@ public class AsteroidManager : MonoBehaviour
 
 
 
-            AsteroidSpawner.Instance.poolsList[data.asteroidDataList[i].spawnType + 1].GetObj()
-                                                .SetInitPos(transform.position)
-                                                .SetPool(AsteroidSpawner.Instance.poolsList[data.asteroidDataList[i].spawnType + 1])
-                                                .SetSpawnAsteroid(data.asteroidDataList[i].spawnType + 1)
-                                                .SetDir();
-
-            /*
-            switch ((TypesAsteroids)data.asteroidDataList[i].types)
-            {
-                case TypesAsteroids.S:
-                    var s = Instantiate(prefabM, pos, Quaternion.identity);
-                    s.GetComponent<Asteroids>().direction = dir;
-                    break;
-                case TypesAsteroids.M:
-                    var m = Instantiate(prefabM, pos, Quaternion.identity);
-                    m.GetComponent<Asteroids>().direction = dir;
-                    break;
-                case TypesAsteroids.L:
-                    var l = Instantiate(prefabL, pos, Quaternion.identity);
-                    l.GetComponent<Asteroids>().direction = dir;
-                    break;
-                default:
-
-                    break;
-            }
-
-            */
-
-
+            AsteroidSpawner.Instance.poolsList[(int)data.asteroidDataList[i].type].GetObj()
+                                                .SetInitPos(data.asteroidDataList[i].position.ToVector3())
+                                                .SetPool(AsteroidSpawner.Instance.poolsList[(int)data.asteroidDataList[i].type])
+                                                .SetSpawnAsteroid((int)data.asteroidDataList[i].type)
+                                                .SetDir(data.asteroidDataList[i].dir.ToVector3());
         }
 
         Debug.Log("Count dataList:      " + data.asteroidDataList.Count);
         for (int i = 0; i < data.asteroidDataList.Count; i++)
         {
-            Debug.Log($"Position:       {data.asteroidDataList[i].position.ToVector3()}   | Type:     {data.asteroidDataList[i].types}");
+            Debug.Log($"Position:       {data.asteroidDataList[i].position.ToVector3()}   | Type:     {data.asteroidDataList[i].type}");
         }
     }
 }

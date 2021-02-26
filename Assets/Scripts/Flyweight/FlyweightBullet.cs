@@ -11,7 +11,7 @@ public class FlyweightBullet    //MyA1-P4
         lifeTime = 2,
         shotSound = Sounds.shootLazer,
         hitSound = Sounds.hit,
-        explosiveBullet = false,
+        explosiveBullet = false
     };
 
     public static Flyweight rocket = new Flyweight
@@ -21,7 +21,7 @@ public class FlyweightBullet    //MyA1-P4
         lifeTime = 5,
         shotSound = Sounds.shootRocket,
         hitSound = Sounds.hit,
-        explosiveBullet = false,
+        explosiveBullet = false
     };
 
     public static Flyweight superRocket = new Flyweight
@@ -31,7 +31,7 @@ public class FlyweightBullet    //MyA1-P4
         lifeTime = 5,
         shotSound = Sounds.shootRocket,
         hitSound = Sounds.hit,
-        explosiveBullet = false,
+        explosiveBullet = false
     };
 
     public static Flyweight Granadas = new Flyweight

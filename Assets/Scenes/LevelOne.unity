@@ -1047,6 +1047,7 @@ GameObject:
   - component: {fileID: 364185687}
   - component: {fileID: 364185688}
   - component: {fileID: 364185689}
+  - component: {fileID: 364185690}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1108,6 +1109,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ast: []
+--- !u!114 &364185690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364185685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcd7b98e8e5b78438c88f6e2cfc3dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerUP:
+  - {fileID: 8105442861027233822, guid: 0bb5cc2bf831b4b4fa2c304d11a08fe9, type: 3}
+  - {fileID: 8105442861027233822, guid: 0f904ab561879874a962a3cbe21c7559, type: 3}
+  - {fileID: 8105442861027233822, guid: b377fadb873bb91438a4c70803a2764a, type: 3}
+  - {fileID: 8105442861027233822, guid: 6a1f339fb45348d40bb2ccd30b0081df, type: 3}
+  - {fileID: 8105442861027233822, guid: 23d5b6c19db98d14d93300dd411f3499, type: 3}
 --- !u!114 &387444120 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5966604881167708464, guid: 5266e41cd05233948a1bc40ab0ef0da7,
@@ -2192,6 +2211,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 364185689}
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 364185690}
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1047284915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2431,6 +2472,28 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1798466070}
         m_MethodName: SaveStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 364185689}
+        m_MethodName: Save
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 364185690}
+        m_MethodName: Save
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

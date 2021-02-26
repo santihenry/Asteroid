@@ -21,11 +21,9 @@ public class PowerUp : MonoBehaviour
     List<Vector3> moveSpot = new List<Vector3>();
     int randomSpot;
     float _currentTime;
-
-    #region    
     Vector3 randomMoveSpot;
     public Vector2 spawnArea;
-    #endregion
+
 
     public TypesPoweUp type;
 

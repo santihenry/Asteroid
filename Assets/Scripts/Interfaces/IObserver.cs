@@ -6,7 +6,8 @@ public interface IObserver
 {
     void OnNotify(string eventName);
 
-
-    /*void OnNotify(string eventName, int score);
-    void OnNotify(string eventName, int score, int indexSoundClip);*/
+    /*
+        void OnNotify(string eventName, int score);
+        void OnNotify(string eventName, int score, int indexSoundClip);
+    */
 }

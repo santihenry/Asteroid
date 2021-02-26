@@ -44,6 +44,7 @@ public class SerializableVector3
     }
 }
 
+
 [Serializable]
 public class SerializableRotation
 {

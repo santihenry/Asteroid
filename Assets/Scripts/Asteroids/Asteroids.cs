@@ -10,9 +10,6 @@ public class Asteroids : MonoBehaviour
     public ObjectPool<Asteroids> pool;
     float currentHealth;
     public int spawnType;
-    //public TypesAsteroids type;
-
-
 
     public Asteroids(Vector3 dir, ObjectPool<Asteroids> poolAsteroid)
     {
@@ -31,6 +28,12 @@ public class Asteroids : MonoBehaviour
     public Asteroids SetDir()
     {
         _dir = FindObjectOfType<ShipController>().transform.position - transform.position;
+        return this;
+    }
+
+    public Asteroids SetDir(Vector3 dir)
+    {
+        _dir = dir;
         return this;
     }
 
@@ -66,12 +69,6 @@ public class Asteroids : MonoBehaviour
         {
             return _flyweight;
         }
-    }
-
-
-    private void Awake()
-    {
-        AsteroidManager.instance.ast.Add(this);
     }
 
 
@@ -131,11 +128,13 @@ public class Asteroids : MonoBehaviour
     public static void TurnOn(Asteroids asteroids)
     {
         asteroids.gameObject.SetActive(true);
+        AsteroidManager.instance.ast.Add(asteroids);
     }
 
     public static void TurnOff(Asteroids asteroids)
     {             
         asteroids.gameObject.SetActive(false);
+        AsteroidManager.instance.ast.Remove(asteroids);
     }
 
     private void OnTriggerEnter(Collider other)

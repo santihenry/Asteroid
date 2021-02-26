@@ -5,8 +5,7 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
 
-    /// LIFES
-
+    // LIFES
     public static void SaveLifeStats(LifeSystem lifeStats)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -22,7 +21,6 @@ public class SaveManager : MonoBehaviour
 
 
     }
-
     public static LifeData LoadLifeStats()
     {
         string filePath = Application.persistentDataPath + "/Life_stats.dll";
@@ -40,9 +38,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-
-
-    /// SHIP
+    // SHIP
     public static void SaveShipStats(ShipModel shipStats)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -56,9 +52,7 @@ public class SaveManager : MonoBehaviour
         fs.Close();
 
 
-    }
-    
-
+    } 
     public static ShipData LoadShipStats()
     {
         string filePath = Application.persistentDataPath + "/Ship_stats.dll";
@@ -76,9 +70,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-
-
-    /// LANGUAGE
+    // LANGUAGE
     public static void SaveLenguage(LanguagueManager lenguegeStats)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -93,7 +85,6 @@ public class SaveManager : MonoBehaviour
 
 
     }
-
     public static LenguageData LoadLenguage()
     {
         string filePath = Application.persistentDataPath + "/Lenguege_stats.dll";
@@ -110,4 +101,6 @@ public class SaveManager : MonoBehaviour
             return null;
         }
     }
+
+
 }
